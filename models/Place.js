@@ -13,6 +13,20 @@ Place.init(
         isAlpha: true,
       },
     },
+    place_subregion: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      validate: {
+        isAlpha: true,
+      },
+    },
+    place_language: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      validate: {
+        isAlpha: true,
+      },
+    },
   },
   {
     sequelize,

@@ -7,6 +7,20 @@ class User extends Model {}
 User.init(
   {
     // ** id will auto generate
+    first_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isAlpha: true,
+      },
+    },
+    last_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isAlpha: true,
+      },
+    },
     user_name: {
       type: DataTypes.STRING,
       allowNull: false,
