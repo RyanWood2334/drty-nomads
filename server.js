@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 3001;
 const hbs = exphbs.create({});
 
 const sess = {
-  secret: process.env.SESSION_SECRET,
+  secret: process.env.SESSION_SECRET, // random string used to create session id.
   cookie: {},
   resave: false,
   saveUninitialized: true,
