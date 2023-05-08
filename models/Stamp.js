@@ -18,8 +18,6 @@ Stamp.init(
       allowNull: true,
     },
     //**foreign key: dest_id will auto generate
-
-    //**foreign key: passport_id will auto generate
   },
   {
     sequelize,

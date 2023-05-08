@@ -1,11 +1,9 @@
 const router = require("express").Router();
-const express = require("express");
 const { User } = require("../../models");
 
-const userRoutes = require("./userController");
-const photoRoutes = require("./photoController");
-const stampRoutes = require("./stampController");
-const placeRoutes = require("./placeController");
+const userRoutes = require("./userRoutes");
+const stampRoutes = require("./stampRoutes");
+const placeRoutes = require("./~placeRoutes");
 
 // Import controllers for all models here
 
@@ -19,9 +17,9 @@ const placeRoutes = require("./placeController");
 
 // Stamp Controller goes here
 
-router.use("/api/photos", photoRoutes);
+// router.use("/api/photos", photoRoutes);
 router.use("/api/stamps", stampRoutes);
 router.use("/api/places", placeRoutes);
-router.use("/api/users", userRoutes);
+router.use("/api/user", userRoutes);
 
 module.exports = router;
