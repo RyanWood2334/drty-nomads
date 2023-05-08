@@ -17,7 +17,7 @@ const withAuth = require("../utils/auth");
   }
 });
 
-router.get("/", withAuth, async (req, res) => {
+router.get("/", async (req, res) => {
     try {
         const userData = await User.findAll({
       attributes: { exclude: ["password"] },
@@ -37,7 +37,7 @@ router.get("/", withAuth, async (req, res) => {
 
 router.get("/login", (req, res) => {
   if (req.session.logged_in) {
-    res.redirect("/");
+    res.redirect("/profile");
     return;
   }
 
@@ -45,7 +45,7 @@ router.get("/login", (req, res) => {
 });
 
 //get all users for our homepage
-router.get("/", async (req, res) => {
+router.get("/home", async (req, res) => {
   try {
     const dbUserData = await User.findAll({
       include: [
@@ -70,7 +70,7 @@ router.get("/", async (req, res) => {
 });
 
 //get one user
-router.get("/user/:id", async (req, res) => {
+router.get("/profile", withAuth, async (req, res) => {
   try {
     const dbUserData = await User.findByPk(req.params.id, {
       include: [
@@ -91,7 +91,7 @@ router.get("/user/:id", async (req, res) => {
     });
 
     const user = dbUserData.get({ plain: true });
-    res.render("user", { user, loggedIn: req.session.loggedIn });
+    res.render("profile", { user, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
