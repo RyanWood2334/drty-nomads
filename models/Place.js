@@ -6,7 +6,7 @@ class Place extends Model {}
 Place.init(
   //**id will auto generate
   {
-    place_name: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
