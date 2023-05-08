@@ -14,21 +14,11 @@ header, .project:not(:last-child) {
   }
   
   .no-button:hover {
-    color: #065b83;
+    color: #391d47;
     text-decoration: underline;
   }
   
-  
-  /* .centered-image {
-    display: block;
-    margin: auto;
-    width: 100%;
-    height: auto;
-    position: absolute;
-    size-adjust: 25%;
-    top: 50%;
-    transform: translateY(-50%);
-  } */
+
   .logo-container {
     position: relative;
     text-align: center;
@@ -70,7 +60,6 @@ header, .project:not(:last-child) {
   }
   
   
-  /* CSS */
   .button-72 {
     align-items: center;
     background-color: initial;
