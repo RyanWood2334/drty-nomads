@@ -1,0 +1,69 @@
+<div class="card mb-3" id="drty-card">
+  <div class="row no-gutters">
+    <div class="col-md-2">
+      <img src="https://i.ibb.co/QNRsLsV/avatar.png" class="card-img" alt="avatar">
+    </div>
+    <div class="col-md-3">
+      <div class="card-body">
+        <p class="card-title">Name: {{firstName}} {{lastName}}</p>
+        <p class="card-text">Country: {{country}}</p>
+        <p class="card-text">About me: {{aboutMe}}</p>
+      </div>
+      <div class="col-md-7"></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Add a button to show/hide the form -->
+
+<img src="https://i.ibb.co/1QTM68S/my-dashboard-html-1.png"  id="new-stamp-btn"></img>
+
+<!-- Add the form inside a container with an ID for easy selection -->
+<div id="new-stamp-form-container" style="display: none;" >
+  <form class="form new-project-form">
+    <div class="form-group">
+      <label for="project-name">Destination:</label>
+      <input class="form-input" type="text" id="project-name" name="project-name" />
+    </div>
+    <div class="form-group">
+      <label for="project-funding">Photo Upload:</label>
+      <input class="form-input" type="number" id="project-funding" name="project-funding" />
+    </div>
+    <div class="form-group">
+      <label for="project-desc">Talk about it:</label>
+      <textarea class="form-input" id="project-desc" name="project-desc"></textarea>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary button-72">Create</button>
+    </div>
+  </form>
+</div>
+
+{{#if projects.length}}
+<div class="row mt-4">
+  <div class="col-md-12">
+    <h3>Digital Passport Stamps:</h3>
+
+    {{#each projects as |project|}}
+    <div class="row mb-2">
+      <div class="col-md-4" id="stamps">
+        <h4><a href="/project/{{project.id}}">{{project.name}}</a><p>{{project.description}}</p></h4>
+      <div class="col-md-8" id="movement">
+        <button class="btn btn-sm btn-danger button-72" data-id="{{project.id}}">DELETE</button>
+
+      </div>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</div>
+{{/if}}
+
+
+
+<script src="./js/profile.js"></script>
+
+
+
+
