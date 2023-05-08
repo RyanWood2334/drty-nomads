@@ -14,15 +14,15 @@ const users = [
     last_name: "Jules",
     user_name: "dj_jules",
     password: "password",
-    user_age: "00000",
-    user_home: "washington",
+    user_age: "36",
+    user_home: "new york",
   },
   {
     first_name: "Tanya",
     last_name: "Silyutina",
     user_name: "tanya_silyutina",
     password: "password",
-    user_age: "00000",
+    user_age: "27",
     user_home: "washington",
   },
   {
@@ -30,8 +30,8 @@ const users = [
     last_name: "Vk",
     user_name: "yamini_vk",
     password: "password",
-    user_age: "00000",
-    user_home: "washington",
+    user_age: "27",
+    user_home: "India",
   },
 ];
 
