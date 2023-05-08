@@ -1,4 +1,5 @@
 const sequelize = require("../config/connection");
+const { User, Stamp, Place, Photo } = require("../models");
 
 const users = [
   {
@@ -811,3 +812,26 @@ const stamps = [
       "I visited the island off the coast of portugal named Madeira and went running in the cloud mountains! absolutely unreal!!",
   },
 ];
+
+const seedDatabase = async () => {
+  try {
+    await sequelize.sync({ force: true });
+
+    const userData = await User.bulkCreate(users, {
+      individualHooks: true,
+      returning: true,
+    });
+    const photoData = await Photo.bulkCreate(photos);
+
+    const placeData = await Place.bulkCreate(places);
+
+    const stampData = await Stamp.bulkCreate(stamps);
+
+
+    process.exit(0);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+seedDatabase();
