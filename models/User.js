@@ -40,6 +40,10 @@ User.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
+    about_me: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
   },
   {
     sequelize,
