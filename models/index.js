@@ -1,18 +1,13 @@
 const User = require("./User");
-const Passport = require("./Passport");
 const Photo = require("./Photo");
 const Stamp = require("./Stamp");
 const Place = require("./Place");
 
-User.hasOne(Passport, {
+User.hasMany(Stamp, {
   onDelete: "CASCADE",
 });
 
-Passport.hasMany(Stamp, {
-  onDelete: "CASCADE",
-});
-
-Passport.belongsTo(User, {
+Stamp.belongsTo(User, {
   onDelete: "CASCADE",
 });
 
@@ -31,7 +26,6 @@ Photo.belongsTo(Stamp, {
 Place.belongsTo(Stamp);
 
 module.exports = {
-  Passport: Passport,
   User: User,
   Photo: Photo,
   Stamp: Stamp,
