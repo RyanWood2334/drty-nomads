@@ -41,3 +41,5 @@ router.delete("/:id", (req, res) => {
       res.status(500).json({ msg: "error occurred", err });
     });
 });
+
+module.exports = router;
