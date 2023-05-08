@@ -32,6 +32,13 @@ User.init(
         len: [10],
       },
     },
+    profile_pic: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      validate: {
+        isUrl: true,
+      },
+    },
     user_age: {
       type: DataTypes.STRING,
       allowNull: false,
