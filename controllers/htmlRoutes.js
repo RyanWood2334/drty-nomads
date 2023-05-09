@@ -2,15 +2,12 @@ const router = require("express").Router();
 const { User, Stamp, Place, Photo } = require("../models");
 const withAuth = require("../utils/auth");
 
-
-
-  router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
-    
     // Pass serialized data and session flag into template
-    res.render('logohome', { 
-      // projects, 
-      logged_in: req.session.logged_in 
+    res.render("logohome", {
+      // projects,
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);

@@ -21,7 +21,7 @@ const photoRoutes = require("./~photoRoutes");
 // router.use("/api/photos", photoRoutes);
 router.use("/stamps", stampRoutes);
 router.use("/places", placeRoutes);
-router.use("/user", userRoutes);
+router.use("/users", userRoutes);
 router.use("/photos", photoRoutes);
 
 module.exports = router;
