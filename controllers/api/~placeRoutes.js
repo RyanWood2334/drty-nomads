@@ -4,7 +4,9 @@ const { Place, Stamp, Photo, User } = require("../../models");
 
 //get all places (future dev)
 router.get("/", (req, res) => {
-  Place.findAll()
+  Place.findAll({
+    include: [Stamp],
+  })
     .then((places) => {
       res.json(places);
     })

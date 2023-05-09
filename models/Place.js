@@ -13,19 +13,13 @@ Place.init(
         isAlpha: true,
       },
     },
-    place_subregion: {
+    subregion: {
       type: DataTypes.STRING,
       allowNull: true,
-      validate: {
-        isAlpha: true,
-      },
     },
-    place_language: {
+    language: {
       type: DataTypes.STRING,
       allowNull: true,
-      validate: {
-        isAlpha: true,
-      },
     },
   },
   {

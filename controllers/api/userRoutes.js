@@ -5,7 +5,7 @@ const { User } = require("../../models");
 // const router = require('express').Router();
 // const { User } = require('../../models');
 
-router.post('/', async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const userData = await User.create(req.body);
 
@@ -20,15 +20,17 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.post('/login', async (req, res) => {
+router.post("/login", async (req, res) => {
   try {
     // Find the user who matches the posted e-mail address
-    const userData = await User.findOne({ where: { username: req.body.username } });
+    const userData = await User.findOne({
+      where: { username: req.body.username },
+    });
 
     if (!userData) {
       res
         .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
+        .json({ message: "Incorrect email or password, please try again" });
       return;
     }
 
@@ -38,7 +40,7 @@ router.post('/login', async (req, res) => {
     if (!validPassword) {
       res
         .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
+        .json({ message: "Incorrect email or password, please try again" });
       return;
     }
 
@@ -46,10 +48,9 @@ router.post('/login', async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
-      
-      res.json({ user: userData, message: 'You are now logged in!' });
-    });
 
+      res.json({ user: userData, message: "You are now logged in!" });
+    });
   } catch (err) {
     res.status(400).json(err);
   }
@@ -57,10 +58,7 @@ router.post('/login', async (req, res) => {
 
 // router.post to create new user.
 
-
-
-
-router.post('/logout', (req, res) => {
+router.post("/logout", (req, res) => {
   if (req.session.logged_in) {
     // Remove the session variables
     req.session.destroy(() => {
@@ -69,6 +67,18 @@ router.post('/logout', (req, res) => {
   } else {
     res.status(404).end();
   }
+});
+
+//test route for looking at seeds (we can comment out at any  time)
+router.get("/", (req, res) => {
+  User.findAll()
+    .then((users) => {
+      res.json(users);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ msg: "error occurred", err });
+    });
 });
 
 module.exports = router;
