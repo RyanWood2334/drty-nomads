@@ -2,11 +2,17 @@ const express = require("express");
 const router = express.Router();
 const { User } = require("../../models");
 
+// Base route is: /api/user
 router.post("/", async (req, res) => {
   const newUser = {
-    first_name: req.body.name,
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
     user_name: req.body.username,
     password: req.body.password,
+    profile_pic: req.body.profile_pic,
+    user_age: req.body.user_age,
+    user_home: req.body.user_home,
+    about_me: req.body.about_me,
   };
 
   try {

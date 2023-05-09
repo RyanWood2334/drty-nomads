@@ -17,7 +17,7 @@ const loginFormHandler = async (event) => {
       // If successful, redirect the browser to the profile page
       document.location.replace('/profile');
     } else {
-      alert(response.statusText);
+      alert(await response.text());
     }
   }
 };
@@ -25,22 +25,28 @@ const loginFormHandler = async (event) => {
 const signupFormHandler = async (event) => {
   event.preventDefault();
 
-  const name = document.querySelector('#name-signup').value.trim();
+  const first_name = document.querySelector('#first_name-signup').value.trim();
+  const last_name = document.querySelector('#last_name-signup').value.trim();
   const username = document.querySelector('#username-signup').value.trim();
   const password = document.querySelector('#password-signup').value.trim();
+  const profile_pic = document.querySelector('#profile_pic-signup').value.trim();
+  const user_age = document.querySelector('#user_age-signup').value.trim();
+  const user_home  = document.querySelector('#user_home-signup').value.trim();
+  const about_me = document.querySelector('#about_me-signup').value.trim();
 
-  if (name && username && password) {
+  if (first_name && username && password) {
     const response = await fetch('/api/user', {
       method: 'POST',
-      body: JSON.stringify({ name, username, password }),
+      body: JSON.stringify({ first_name, last_name, username, password, profile_pic, user_age, user_home, about_me }),
       headers: { 'Content-Type': 'application/json' },
     });
 
     if (response.ok) {
       alert('user created');
+      document.location.replace('/profile');
       // document.location.replace('/stamps');
     } else {
-      alert(response.statusText);
+      alert(await response.text());
     }
   }
 };
