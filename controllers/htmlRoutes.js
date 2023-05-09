@@ -73,12 +73,37 @@ router.get("/home", async (req, res) => {
 router.get("/profile", withAuth, async (req, res) => {
   try {
     const dbUserData = await User.findByPk(req.session.user_id);
-    res.render("profile", { firstName: dbUserData.first_name , country: dbUserData.user_home , aboutMe: dbUserData.about_me });
+    res.render("profile", { firstName: dbUserData.first_name , country: dbUserData.user_home , aboutMe: dbUserData.about_me , profilePic:dbUserData.e_pic});
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
+
+// router.get("/profile/stamps", async (req, res) => {
+//   try {
+//     const dbUserData = await Stamp.findAll({
+//       include: [
+//         {
+//           model: Stamp,
+//           attributes: ["destination_name" , "destination_notes"],
+          
+//         },
+//       ],
+//     });
+//     const stamps = dbUserData.map((users)=> users.get({plain:true}))
+//     res.render("profile", {
+//       stamps,
+//       loggedIn: req.session.loggedIn,
+//     });
+    
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+// });
+
+
 
 //get one stamp
 router.get("/stamp/:id", async (req, res) => {
@@ -89,7 +114,7 @@ router.get("/stamp/:id", async (req, res) => {
     });
 
     const stamp = dbStampData.get({ plain: true });
-    res.render("stamp", { stamp, loggedIn: req.session.loggedIn });
+    res.render("profile", { stamp, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
