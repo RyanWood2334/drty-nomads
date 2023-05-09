@@ -9,9 +9,6 @@ Place.init(
     name: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        isAlpha: true,
-      },
     },
     subregion: {
       type: DataTypes.STRING,

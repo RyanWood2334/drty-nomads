@@ -58,22 +58,27 @@ const photos = [
   {
     photo_url:
       "https://res.cloudinary.com/duaznt4wg/image/upload/v1683347063/cld-sample-2.jpg",
+    stampId: 1,
   },
   {
     photo_url:
       "https://res.cloudinary.com/duaznt4wg/video/upload/v1683347057/samples/elephants.mp4",
+    stampId: 2,
   },
   {
     photo_url:
       "https://res.cloudinary.com/duaznt4wg/image/upload/v1683347052/samples/landscapes/nature-mountains.jpg",
+    stampId: 3,
   },
   {
     photo_url:
       "https://res.cloudinary.com/duaznt4wg/image/upload/v1683347049/samples/landscapes/beach-boat.jpg",
+    stampId: 5,
   },
   {
     photo_url:
       "https://res.cloudinary.com/duaznt4wg/image/upload/v1683347042/samples/animals/reindeer.jpg",
+    stampId: 4,
   },
 ];
 

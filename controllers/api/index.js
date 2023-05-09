@@ -4,6 +4,7 @@ const { User } = require("../../models");
 const userRoutes = require("./userRoutes");
 const stampRoutes = require("./stampRoutes");
 const placeRoutes = require("./~placeRoutes");
+const photoRoutes = require("./~photoRoutes");
 
 // Import controllers for all models here
 
@@ -21,5 +22,6 @@ const placeRoutes = require("./~placeRoutes");
 router.use("/stamps", stampRoutes);
 router.use("/places", placeRoutes);
 router.use("/user", userRoutes);
+router.use("/photos", photoRoutes);
 
 module.exports = router;
