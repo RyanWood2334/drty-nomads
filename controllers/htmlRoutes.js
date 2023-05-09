@@ -72,26 +72,8 @@ router.get("/home", async (req, res) => {
 //get one user
 router.get("/profile", withAuth, async (req, res) => {
   try {
-    const dbUserData = await User.findByPk(req.params.id, {
-      include: [
-        {
-          model: User,
-          attributes: [
-            "first_name",
-            "last_name",
-            "user_name",
-            "user_age",
-            "user_home",
-            "about_me",
-          ],
-          include: [Stamp],
-          include: [Photo],
-        },
-      ],
-    });
-
-    const user = dbUserData.get({ plain: true });
-    res.render("profile", { user, loggedIn: req.session.loggedIn });
+    const dbUserData = await User.findByPk(req.session.user_id);
+    res.render("profile", { firstName: dbUserData.first_name , country: dbUserData.user_home , aboutMe: dbUserData.about_me });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
