@@ -1,7 +1,7 @@
 //we'll need to connect this file once our connect file structure is in place
 require("dotenv").config;
 const cloudinary = require("cloudinary");
-
+const { Place, Stamp, Photo, User } = require("../models");
 //use the .env file to refrence for security purposes eventually - cloud_name and api_key are public so it doesnt matter too much for those, but api_secret DEFINITELY needs to be protected.
 // cloudinary.config({
 //   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -65,3 +65,19 @@ document.getElementById("upload_widget").addEventListener(
   },
   false
 );
+
+//needs to create a new photo
+//needs to tie that photo to a stamp
+//needs to render the photo on the page in given stamp id
+router.post("/", (req, res) => {
+  Photo.create({
+    photo_url: req.body.photo_url,
+  })
+    .then((newPhoto) => {
+      res.json(newPhoto);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ msg: "error occurred", err });
+    });
+});
