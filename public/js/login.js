@@ -17,7 +17,7 @@ const loginFormHandler = async (event) => {
       // If successful, redirect the browser to the profile page
       document.location.replace('/profile');
     } else {
-      alert(response.statusText);
+      alert(await response.text());
     }
   }
 };
@@ -40,7 +40,7 @@ const signupFormHandler = async (event) => {
       alert('user created');
       // document.location.replace('/stamps');
     } else {
-      alert(response.statusText);
+      alert(await response.text());
     }
   }
 };

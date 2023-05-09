@@ -1,50 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DRTY Nomads!</title>
-  <link rel="stylesheet" href="/css/jass.css">
-  <link rel="stylesheet" href="/css/style.css">
-</head>
-
-<body>
-  <div class="flex-column justify-space-around">
-    <header class="display-flex justify-space-between align-center p-2">
-      <h1>
-       
-      </h1>
-      <nav>
-        
-      </nav>
-    </header>
-    <main class="container container-fluid mt-5">
-
-
-    
-    {{{ body }}}
-
-<div class="logo-container">
-  <img src="https://i.ibb.co/KsMxnYS/logo.png" alt="Logo" class="centered-image fit-image">
-  <div class="button-container">
-    <button class="btn btn-sm btn-danger button-72" id="newBtn">New Nomad</button>
-    <button class="btn btn-sm btn-danger button-72" id="loginBtn">Login Nomad</button>
-     <button class="btn btn-sm btn-danger button-72" id="logout">Logout</button>
-  </div>
+<div class="row justify-center align-center min-100-vh">
+    <div class="display-flex flex-column">
+        <div class="display-flex justify-center">
+            <img src="/images/logo.png" style="height: 400px">
+        </div>
+        <div class="display-flex justify-center">
+            <button class="btn btn-danger" style="margin-right: .5em;" data-bs-toggle="modal" data-bs-target="#registerModal">New Nomad</button>
+            <button class="btn btn-danger" style="margin-right: .5em;" data-bs-toggle="modal" data-bs-target="#loginModal">Login Nomad</button>
+        </div>
+    </div>
 </div>
 
+<!-- Register modal -->
+<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark text-light">
+            <div class="modal-header">
+                <h5 class="modal-title" id="registerModal">Register</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form class="signup-form">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="name-signup" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name-signup" placeholder="Name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="username-signup" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username-signup" placeholder="Username">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password-signup" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password-signup" placeholder="Password">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger" id="registerBtn">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
-      
-    </footer>
-  </div>
+<!--Login modal-->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark text-light">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginModal">Login</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form class="login-form">
+            <div class="modal-body">
 
-  <!-- Render script for logged in users only -->
-  {{#if logged_in}}
-  <script src="/js/logout.js"></script>
+                    <div class="mb-3">
+                        <label for="username-login" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username-login" placeholder="Username" >
+                    </div>
+                    <div class="mb-3">
+                        <label for="password-login" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password-login" placeholder="Password">
+                    </div>
 
-  {{/if}}
-  <script src="/js/hidebutton.js"></script>
-</body>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-danger">Login</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
 
-</html>
+<script src="/js/login.js"></script>
