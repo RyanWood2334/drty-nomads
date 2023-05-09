@@ -73,7 +73,7 @@ router.get("/home", async (req, res) => {
 router.get("/profile", withAuth, async (req, res) => {
   try {
     const dbUserData = await User.findByPk(req.session.user_id);
-    res.render("profile", { firstName: dbUserData.first_name, lastName: dbUserData.last_name, country: dbUserData.user_home , aboutMe: dbUserData.about_me });
+    res.render("profile", { firstName: dbUserData.first_name, lastName: dbUserData.last_name, country: dbUserData.user_home , aboutMe: dbUserData.about_me, profilePic: dbUserData.profile_pic });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
