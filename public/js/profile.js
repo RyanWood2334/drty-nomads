@@ -1,14 +1,14 @@
 const newFormHandler = async (event) => {
   event.preventDefault();
 
-  const name = document.querySelector('#project-name').value.trim();
-  const needed_funding = document.querySelector('#project-funding').value.trim();
-  const description = document.querySelector('#project-desc').value.trim();
+  const destination_name = document.querySelector('#project-name').value.trim();
+  const photo = document.querySelector('#project-funding').value.trim();
+  const destination_notes = document.querySelector('#project-desc').value.trim();
 
-  if (name && needed_funding && description) {
-    const response = await fetch(`/api/projects`, {
+  if (destination_name && destination_notes ) {
+    const response = await fetch(`/api/stamps`, {
       method: 'POST',
-      body: JSON.stringify({ name, needed_funding, description }),
+      body: JSON.stringify({ destination_name, photo , destination_notes }),
       headers: {
         'Content-Type': 'application/json',
       },
@@ -58,5 +58,5 @@ const newStampBtn = document.querySelector('#new-stamp-btn');
   newStampBtn.addEventListener('click', showNewStampForm);
 
 document
-  .querySelector('.new-stamp-form')
+  .querySelector('.new-project-form')
   .addEventListener('submit', newFormHandler);
