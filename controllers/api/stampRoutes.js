@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { Stamp } = require("../../models");
+const { Stamp, User, Photo } = require("../../models");
 
 router.post("/", async (req, res) => {
   if (!req.session.logged_in) {
@@ -43,6 +43,19 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-module.exports = router;
+//test route for looking at seeds (we can comment out at any  time)
+router.get("/", (req, res) => {
+  Stamp.findAll({
+    include: [User],
+    include: [Photo],
+  })
+    .then((stamps) => {
+      res.json(stamps);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ msg: "error occurred", err });
+    });
+});
 
 module.exports = router;

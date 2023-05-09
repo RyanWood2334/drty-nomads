@@ -11,7 +11,7 @@ Stamp.belongsTo(User, {
   onDelete: "CASCADE",
 });
 
-Stamp.hasOne(Place, {
+Stamp.belongsTo(Place, {
   onDelete: "CASCADE",
 });
 
@@ -23,7 +23,7 @@ Photo.belongsTo(Stamp, {
   onDelete: "SET NULL",
 });
 
-Place.belongsTo(Stamp);
+Place.hasMany(Stamp);
 
 module.exports = {
   User: User,
