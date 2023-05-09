@@ -18,8 +18,8 @@ const placeRoutes = require("./~placeRoutes");
 // Stamp Controller goes here
 
 // router.use("/api/photos", photoRoutes);
-router.use("/api/stamps", stampRoutes);
-router.use("/api/places", placeRoutes);
-router.use("/api/user", userRoutes);
+router.use("/stamps", stampRoutes);
+router.use("/places", placeRoutes);
+router.use("/user", userRoutes);
 
 module.exports = router;
