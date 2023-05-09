@@ -123,7 +123,48 @@ router.get("/profile", withAuth, async (req, res) => {
 router.get("/profile", withAuth, async (req, res) => {
   try {
     const dbUserData = await User.findByPk(req.session.user_id);
-    res.render("profile", { firstName: dbUserData.first_name, lastName: dbUserData.last_name, country: dbUserData.user_home , aboutMe: dbUserData.about_me });
+    res.render("profile", {
+      firstName: dbUserData.first_name,
+      lastName: dbUserData.last_name,
+      country: dbUserData.user_home,
+      aboutMe: dbUserData.about_me,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get("/profile", withAuth, async (req, res) => {
+  try {
+    const dbUserData = await User.findByPk(req.session.user_id, {
+      include: [Stamp],
+    });
+    const user = dbUserData.get({ plain: true });
+    res.render("profile", {
+      firstName: dbUserData.first_name,
+      lastName: dbUserData.last_name,
+      country: dbUserData.user_home,
+      aboutMe: dbUserData.about_me,
+      photos: dbUserData.Photos,
+      destinationName: dbUserData.destination_name,
+      destinationNotes: dbUserData.destination_notes,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get("/profile", withAuth, async (req, res) => {
+  try {
+    const dbStampData = await Stamp.findByPk(req.session.user_id);
+    console.log(dbStampData);
+    res.render("profile", {
+      photos: dbStampData.Photos,
+      destinationName: dbStampData.destination_name,
+      destinationNotes: dbStampData.destination_notes,
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
