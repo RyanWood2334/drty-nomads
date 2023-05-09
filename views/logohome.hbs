@@ -19,25 +19,25 @@
                 <h5 class="modal-title" id="registerModal">Register</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <form>
+            <form class="signup-form">
+                <div class="modal-body">
                     <div class="mb-3">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" placeholder="Name">
+                        <label for="name-signup" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name-signup" placeholder="Name">
                     </div>
                     <div class="mb-3">
-                        <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="username" placeholder="Username">
+                        <label for="username-signup" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username-signup" placeholder="Username">
                     </div>
                     <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" placeholder="Password">
+                        <label for="password-signup" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password-signup" placeholder="Password">
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger">Register</button>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger" id="registerBtn">Register</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -50,22 +50,25 @@
                 <h5 class="modal-title" id="loginModal">Login</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            <form class="login-form">
             <div class="modal-body">
-                <form>
+
                     <div class="mb-3">
-                        <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="username" placeholder="Username">
+                        <label for="username-login" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username-login" placeholder="Username" >
                     </div>
                     <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" placeholder="Password">
+                        <label for="password-login" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password-login" placeholder="Password">
                     </div>
-                </form>
+
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger">Login</button>
+                <button type="submit" class="btn btn-danger">Login</button>
             </div>
+            </form>
         </div>
     </div>
 </div>
 
+<script src="/js/login.js"></script>
