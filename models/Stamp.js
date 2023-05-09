@@ -9,9 +9,9 @@ Stamp.init(
     destination_name: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        isAlpha: true,
-      },
+      // validate: {
+      //   isAlpha: true,
+      // },
     },
     destination_notes: {
       type: DataTypes.STRING,
