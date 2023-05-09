@@ -9,7 +9,7 @@ router.post("/", async (req, res) => {
     last_name: req.body.last_name,
     user_name: req.body.username,
     password: req.body.password,
-    profile_pic: req.body.profile_pic,
+    // profile_pic: req.body.profile_pic,
     user_age: req.body.user_age,
     user_home: req.body.user_home,
     about_me: req.body.about_me,
