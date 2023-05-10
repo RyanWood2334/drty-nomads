@@ -42,6 +42,7 @@ deleteButtons.forEach((button) => {
 });
 
 const uploadPhotoBtn = document.querySelector("#add-photo-btn");
+const newStampBtn = document.querySelector("#new-stamp-btn");
 
 const myWidget = cloudinary.createUploadWidget(
   {
@@ -85,11 +86,6 @@ const myWidget = cloudinary.createUploadWidget(
   }
 );
 
-uploadPhotoBtn.addEventListener("click", function () {
-  myWidget.open();
-});
-
-const newStampBtn = document.querySelector("#new-stamp-btn");
 const newStampFormContainer = document.querySelector(
   "#new-stamp-form-container"
 );
@@ -105,7 +101,13 @@ const showNewStampForm = () => {
 };
 
 newStampBtn.addEventListener("click", showNewStampForm);
+uploadPhotoBtn.addEventListener("click", function () {
+  myWidget.open();
+});
 
+// document
+//   .querySelector(".new-project-form")
+//   .addEventListener("submit", newFormHandler);
 document
   .querySelector(".new-project-form")
-  .addEventListener("submit", newFormHandler);
+  .addEventListener("submit", console.log("I hit the create stamp button!"));

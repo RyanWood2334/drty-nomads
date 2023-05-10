@@ -15,32 +15,29 @@ router.post("/", async (req, res) => {
       // UserId: req.session.user_id,
     });
 
-
     res.status(200).json(newStamp);
   } catch (err) {
     res.status(400).json(err);
   }
 });
 
-router.get("/", async (req, res) => {
-  try {
-    const dbStampData = await Stamp.findAll({
-      where: { UserId: req.session.user_id },
-      include: [
-        { model: User, attributes: ["first_name", "last_name", "profile_pic"] },
-      ],
-    });
+// router.get("/", async (req, res) => {
+//   try {
+//     const dbStampData = await Stamp.findAll({
+//       where: { UserId: req.session.user_id },
+//       include: [
+//         { model: User, attributes: ["first_name", "last_name", "profile_pic"] },
+//       ],
+//     });
 
-    const stamps = dbStampData.map((stamp) => stamp.get({ plain: true }));
+//     const stamps = dbStampData.map((stamp) => stamp.get({ plain: true }));
 
-    res.render("profile", { stamps, loggedIn: true });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
-
-
+//     res.render("profile", { stamps, loggedIn: true });
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+// });
 
 router.delete("/:id", async (req, res) => {
   if (!req.session.logged_in) {
@@ -68,11 +65,10 @@ router.delete("/:id", async (req, res) => {
 //test route for looking at seeds (we can comment out at any  time)
 router.get("/", (req, res) => {
   Stamp.findAll({
-    include: [{model:Place}],
-    include: [{model:User}],
-    include: [{model:Photo}],
-    include: [{model:Stamp}],
-    
+    // include: [{model:Place}],
+    // include: [{model:User}],
+    // include: [{model:Photo}],
+    // include: [{model:Stamp}],
   })
     .then((stamps) => {
       res.json(stamps);
@@ -82,7 +78,5 @@ router.get("/", (req, res) => {
       res.status(500).json({ msg: "error occurred", err });
     });
 });
-
-
 
 module.exports = router;

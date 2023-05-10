@@ -34,7 +34,7 @@ router.post("/login", (req, res) => {
   User.findOne({ where: { user_name: req.body.username } })
     .then((userData) => {
       if (!userData) {
-        res.status(400).json({ message: "Incorrect email " });
+        res.status(400).json({ message: "Invalid username/password" });
         return;
       }
 
@@ -42,7 +42,7 @@ router.post("/login", (req, res) => {
       const validPassword = userData.checkPassword(req.body.password);
 
       if (!validPassword) {
-        res.status(400).json({ message: "Incorrect password" });
+        res.status(400).json({ message: "Invalid username/password" });
         return;
       }
 
@@ -73,15 +73,15 @@ router.post("/logout", (req, res) => {
 });
 
 //test route for looking at seeds (we can comment out at any  time)
-// router.get("/", (req, res) => {
-//   User.findAll()
-//     .then((users) => {
-//       res.json(users);
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//       res.status(500).json({ msg: "error occurred", err });
-//     });
-// });
+router.get("/", (req, res) => {
+  User.findAll()
+    .then((users) => {
+      res.json(users);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ msg: "error occurred", err });
+    });
+});
 
 module.exports = router;
