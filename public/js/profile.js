@@ -41,6 +41,54 @@ deleteButtons.forEach((button) => {
   });
 });
 
+const uploadPhotoBtn = document.querySelector("#add-photo-btn");
+
+const myWidget = cloudinary.createUploadWidget(
+  {
+    cloudName: "duaznt4wg",
+    uploadPreset: "drty_nomads_upload",
+    sources: ["local", "url", "facebook", "instagram", "google_drive"],
+    multiple: true,
+    maxfiles: 5,
+    styles: {
+      palette: {
+        window: "#B55419",
+        windowBorder: "#66350F",
+        tabIcon: "#7519B5",
+        menuIcons: "#7519B5",
+        textDark: "#FFFFF",
+        textLight: "#00000",
+        link: "#0078FF",
+        action: "#FF620C",
+        inactiveTabIcon: "#0E2F5A",
+        error: "#F44235",
+        inProgress: "#0078FF",
+        complete: "#20B832",
+        sourceBg: "#E4EBF1",
+      },
+      frame: {
+        background: "#7519B5",
+      },
+      fonts: {
+        "'Cute Font', cursive":
+          "https://fonts.googleapis.com/css?family=Cute+Font",
+      },
+    },
+  },
+  (error, result) => {
+    if (!error && result && result.event === "success") {
+      console.log("Done! Here is the image info: ", result.info);
+      document
+        .getElementById("uploadedimage")
+        .setAttribute("src", result.info.secure_url);
+    }
+  }
+);
+
+uploadPhotoBtn.addEventListener("click", function () {
+  myWidget.open();
+});
+
 const newStampBtn = document.querySelector("#new-stamp-btn");
 const newStampFormContainer = document.querySelector(
   "#new-stamp-form-container"
