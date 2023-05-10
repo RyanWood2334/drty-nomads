@@ -29,7 +29,6 @@
 <!-- Add the form inside a container with an ID for easy selection -->
 <div id="new-stamp-form-container" style="display: none;" >
   <form class="form new-project-form">
-      <img src="" hidden="hidden" id="ac-img">
     <div class="form-group">
       <label for="project-name">Destination:</label>
       <input class="typeahead form-control" type="text" id="project-name" name="project-name" placeholder="What magical place did you go?"/>
@@ -288,7 +287,7 @@
   {{#each stamp as |stamps|}}
   <div class="col-md-4">
     <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="" alt="Card image cap">
+      <img class="card-img-top" src="..." alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title"><a href="/stamps/{{stamps.id}}">{{stamps.destination_name}}</a></h5>
         <p class="card-text">{{stamps.destination_notes}}</p>
@@ -305,6 +304,7 @@
      type="text/javascript">
     </script>
 <script src="./js/profile.js"></script>
-<script async
-        src="https://maps.googleapis.com/maps/api/js?key={{ mapsApiKey }}&libraries=places&callback=initMap">
-</script>
+
+
+
+

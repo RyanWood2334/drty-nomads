@@ -140,6 +140,21 @@ router.get("/profile", withAuth, async (req, res) => {
   }
 });
 
+router.get("/users/:id", withAuth, async (req, res) => {
+  try {
+    const dbUserData = await User.findByPk(req.session.user_id);
+    res.render("profile", {
+      firstName: dbUserData.first_name,
+      lastName: dbUserData.last_name,
+      country: dbUserData.user_home,
+      aboutMe: dbUserData.about_me,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 router.get("/profile", withAuth, async (req, res) => {
   try {
     const dbUserData = await User.findByPk(req.session.user_id, {
