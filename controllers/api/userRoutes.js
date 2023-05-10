@@ -9,7 +9,7 @@ router.post("/", async (req, res) => {
     last_name: req.body.last_name,
     user_name: req.body.username,
     password: req.body.password,
-    // profile_pic: req.body.profile_pic,
+    profile_pic: req.body.profile_pic,
     user_age: req.body.user_age,
     user_home: req.body.user_home,
     about_me: req.body.about_me,
@@ -27,6 +27,26 @@ router.post("/", async (req, res) => {
   } catch (err) {
     res.status(400).json(err);
   }
+});
+
+router.put("/:id", (req, res) => {
+  Zoo.update(
+    {
+      name: req.body.name,
+    },
+    {
+      where: {
+        id: req.params.id,
+      },
+    }
+  )
+    .then((editZoo) => {
+      res.json(editZoo);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ msg: "error occurred", err });
+    });
 });
 
 router.post("/login", (req, res) => {

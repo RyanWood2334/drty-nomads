@@ -5,9 +5,9 @@ const withAuth = require("../utils/auth");
 router.get("/", async (req, res) => {
   try {
     // Pass serialized data and session flag into template
-    res.render('logohome', { 
-      // projects, 
-      logged_in: req.session.logged_in 
+    res.render("logohome", {
+      // projects,
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -15,8 +15,8 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/", async (req, res) => {
-    try {
-        const userData = await User.findAll({
+  try {
+    const userData = await User.findAll({
       attributes: { exclude: ["password"] },
       order: [["name", "ASC"]],
     });
@@ -97,12 +97,12 @@ router.get("/profile", withAuth, async (req, res) => {
       include: [
         {
           model: Stamp,
-          // model: Place, 
+          // model: Place,
           // model: Photo,
         },
       ],
     });
-    
+
     const user = dbUserData.get({ plain: true });
 
     const stamp = user.Stamps;
@@ -110,14 +110,14 @@ router.get("/profile", withAuth, async (req, res) => {
     const logged = true;
 
     console.log(stamp);
-// add google maps api key
+    // add google maps api key
     res.render(`profile`, {
       user,
       stamp,
       logged,
       loggedIn: req.session.loggedIn,
       mapsApiKey: process.env.MAPS_API_KEY,
-     });
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -143,11 +143,11 @@ router.get("/profile", withAuth, async (req, res) => {
 router.get("/users/:id", withAuth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.params.id, {
-      include: [ Stamp],
+      include: [Stamp],
     });
 
     if (!userData) {
-      return res.status(404).json({ message: 'User not found' });
+      return res.status(404).json({ message: "User not found" });
     }
 
     const user = userData.get({ plain: true });
@@ -157,14 +157,17 @@ router.get("/users/:id", withAuth, async (req, res) => {
 
     const logged = true;
 
-    res.render("user", { user, stamps, logged, loggedIn: req.session.loggedIn });
+    res.render("user", {
+      user,
+      stamps,
+      logged,
+      loggedIn: req.session.loggedIn,
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
-
-
 
 router.get("/profile", withAuth, async (req, res) => {
   try {
@@ -209,7 +212,7 @@ router.get("/stamps/:id", withAuth, async (req, res) => {
     });
 
     if (!dbStampData) {
-      return res.status(404).json({ message: 'Stamp not found' });
+      return res.status(404).json({ message: "Stamp not found" });
     }
 
     const stamp = dbStampData.get({ plain: true });
@@ -217,32 +220,34 @@ router.get("/stamps/:id", withAuth, async (req, res) => {
 
     logged = true;
     // console.log(stamp);
-    
-    res.render("stamps", { stamp, user, logged, loggedIn: req.session.loggedIn });
+
+    res.render("stamps", {
+      stamp,
+      user,
+      logged,
+      loggedIn: req.session.loggedIn,
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
 
-router.get('/home', async (req, res) => {
+router.get("/home", async (req, res) => {
   try {
     const userData = await User.findAll({
       include: [Stamp],
     });
-    const users = userData.map(user => user.get({ plain: true }));
-console.log(users);
+    const users = userData.map((user) => user.get({ plain: true }));
+    console.log(users);
     const logged = true;
 
-    res.render('homepage', { users, logged, loggedIn: req.session.loggedIn });
+    res.render("homepage", { users, logged, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
-
-
-
 
 // router.get("/profile/stamps", async (req, res) => {
 //   try {
@@ -251,7 +256,7 @@ console.log(users);
 //         {
 //           model: Stamp,
 //           attributes: ["destination_name" , "destination_notes"],
-          
+
 //         },
 //       ],
 //     });
@@ -260,7 +265,7 @@ console.log(users);
 //       stamps,
 //       loggedIn: req.session.loggedIn,
 //     });
-    
+
 //   } catch (err) {
 //     console.log(err);
 //     res.status(500).json(err);
