@@ -115,3 +115,28 @@ newStampBtn.addEventListener("click", showNewStampForm);
 
 // Event listener for form submission
 document.querySelector(".new-project-form").addEventListener("submit", newFormHandler);
+
+// google maps API
+async function initMap() {
+  const img = document.getElementById('ac-img');
+  console.log('maps init!');
+  const el = document.getElementById('project-name');
+  const options = {
+    types: ["locality", "country", "administrative_area_level_1"],
+  }
+  const autocomplete = new google.maps.places.Autocomplete(el, options);
+
+  // Adds pictures
+  // autocomplete.addListener('place_changed', (c) => {
+  //   const place = autocomplete.getPlace();
+  //   if (place.photos.length > 0) {
+  //     const url = place.photos[0].getUrl({
+  //       maxWidth: 800,
+  //       maxHeight: 400,
+  //     })
+  //     img.removeAttribute('hidden');
+  //     img.setAttribute('src', url)
+  //     console.log(url);
+  //   }
+  // })
+}
