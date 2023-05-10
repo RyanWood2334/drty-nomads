@@ -22,6 +22,24 @@ router.post("/", async (req, res) => {
   }
 });
 
+// test routes for adding like 
+router.put("/:id/like", (req,res)=>{
+  Stamp.findOne({where:{id: req.params.id}}).then(data=>{
+    const stampData = data;
+    const like = stampData.like;
+    Stamp.update({likes:like++},{where:{id:req.params.id}}).then(data=>{
+      res.json(data);
+    }).catch(err=>{
+      console.log(err);
+      res.status(500).json({msg:"invalid syntax hence ,error occurred",err})
+    }) 
+  })
+ 
+})
+
+ 
+
+
 router.get("/", async (req, res) => {
   try {
     const dbStampData = await Stamp.findAll({
@@ -66,7 +84,8 @@ router.delete("/:id", async (req, res) => {
 });
 
 router.put("/:id", (req, res) => {
-  Stamp.update({destination_name: req.body.destination_name, destination_notes:req.body.destination_notes}, {where: {id: req.params.id}}).then(data=>{
+  Stamp.update({destination_name: req.body.destination_name, destination_notes:req.body.destination_notes},
+    {where: {id: req.params.id}}).then(data=>{
     res.json(data);
   }).catch(err=>{
     console.log(err);
