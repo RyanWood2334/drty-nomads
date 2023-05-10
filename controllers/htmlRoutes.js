@@ -92,9 +92,10 @@ router.get("/profile", withAuth, async (req, res) => {
 
     const stamp = user.Stamps;
     
+
     console.log(req.session.loggedIn);
 
-    res.render(`profile`, { user, stamp,
+    res.render(`profile`, { user, stamp, loggedIn:req.session.loggedIn,
      });
   } catch (err) {
     console.log(err);
