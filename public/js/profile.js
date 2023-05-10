@@ -1,11 +1,18 @@
+// Function to handle form submission for creating new stamp
 const newFormHandler = async (event) => {
   event.preventDefault();
 
   const destination_name = document.querySelector("#project-name").value.trim();
-  const photo = document.querySelector("#project-funding").value.trim();
+  let photo = "";
   const destination_notes = document
     .querySelector("#project-desc")
     .value.trim();
+
+  // Get the uploaded photo URL
+  const uploadedImg = document.getElementById("uploadedimage");
+  if (uploadedImg && uploadedImg.src) {
+    photo = uploadedImg.src;
+  }
 
   if (destination_name && destination_notes) {
     const response = await fetch(`/api/stamps`, {
@@ -24,6 +31,7 @@ const newFormHandler = async (event) => {
   }
 };
 
+// Function to handle deletion of stamps
 const deleteButtons = document.querySelectorAll("[data-id]");
 deleteButtons.forEach((button) => {
   button.addEventListener("click", async (event) => {
@@ -41,9 +49,8 @@ deleteButtons.forEach((button) => {
   });
 });
 
+// Function to handle photo upload
 const uploadPhotoBtn = document.querySelector("#add-photo-btn");
-const newStampBtn = document.querySelector("#new-stamp-btn");
-
 const myWidget = cloudinary.createUploadWidget(
   {
     cloudName: "duaznt4wg",
@@ -85,7 +92,12 @@ const myWidget = cloudinary.createUploadWidget(
     }
   }
 );
+uploadPhotoBtn.addEventListener("click", function () {
+  myWidget.open();
+});
 
+// Function to show/hide new stamp form
+const newStampBtn = document.querySelector("#new-stamp-btn");
 const newStampFormContainer = document.querySelector(
   "#new-stamp-form-container"
 );
@@ -99,15 +111,12 @@ const showNewStampForm = () => {
     n--;
   }
 };
-
 newStampBtn.addEventListener("click", showNewStampForm);
 uploadPhotoBtn.addEventListener("click", function () {
   myWidget.open();
 });
 
-// document
-//   .querySelector(".new-project-form")
-//   .addEventListener("submit", newFormHandler);
+// Event listener for form submission
 document
   .querySelector(".new-project-form")
-  .addEventListener("submit", console.log("I hit the create stamp button!"));
+  .addEventListener("submit", newFormHandler);

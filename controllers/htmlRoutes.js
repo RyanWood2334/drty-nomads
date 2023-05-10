@@ -135,6 +135,32 @@ router.get("/profile", withAuth, async (req, res) => {
   }
 });
 
+router.get("/users/:id", withAuth, async (req, res) => {
+  try {
+    const userData = await User.findByPk(req.params.id, {
+      include: [ Stamp],
+    });
+
+    if (!userData) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    const user = userData.get({ plain: true });
+    const stamps = user.Stamps;
+
+    console.log(user);
+
+    const logged = true;
+
+    res.render("user", { user, stamps, logged, loggedIn: req.session.loggedIn });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+
+
 router.get("/profile", withAuth, async (req, res) => {
   try {
     const dbUserData = await User.findByPk(req.session.user_id, {

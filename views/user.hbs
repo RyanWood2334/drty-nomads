@@ -1,0 +1,43 @@
+
+
+<div class="card mb-3" id="drty-card">
+  <div class="row no-gutters">
+    <div class="col-md-2">
+      <img src={{user.profile_pic}} class="card-img my-prof" alt="avatar" style="width: 200px;">
+    </div>
+    <div class="col-md-3">
+      <div class="card-body">
+        <p class="card-title">Name: {{user.first_name}} {{user.last_name}}</p>
+        <p class="card-text">Country: {{user.user_home}}</p>
+        <p class="card-text">About me: {{user.about_me}}</p>
+      </div>
+      <div class="col-md-7"></div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="row">
+  {{#each stamps}}
+  <div class="col-md-4">
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="..." alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title"><a href="/stamps/{{this.id}}">{{this.destination_name}}</a></h5>
+        <p class="card-text">{{this.destination_notes}}</p>
+        {{!-- <button class="btn btn-sm btn-danger button-72" data-id="{{this.id}}">LIKE</button> --}}
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>
+
+
+
+
+
+
+
+
+
