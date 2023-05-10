@@ -106,11 +106,12 @@ router.get("/profile", withAuth, async (req, res) => {
     const user = dbUserData.get({ plain: true });
 
     const stamp = user.Stamps;
-    
 
-    console.log(req.session.loggedIn);
+    const logged = true;
 
-    res.render(`profile`, { user, stamp, loggedIn:req.session.loggedIn,
+    console.log(stamp);
+
+    res.render(`profile`, { user, stamp,logged, loggedIn:req.session.loggedIn,
      });
   } catch (err) {
     console.log(err);
@@ -122,12 +123,92 @@ router.get("/profile", withAuth, async (req, res) => {
 router.get("/profile", withAuth, async (req, res) => {
   try {
     const dbUserData = await User.findByPk(req.session.user_id);
-    res.render("profile", { firstName: dbUserData.first_name, lastName: dbUserData.last_name, country: dbUserData.user_home , aboutMe: dbUserData.about_me });
+    res.render("profile", {
+      firstName: dbUserData.first_name,
+      lastName: dbUserData.last_name,
+      country: dbUserData.user_home,
+      aboutMe: dbUserData.about_me,
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
+
+router.get("/profile", withAuth, async (req, res) => {
+  try {
+    const dbUserData = await User.findByPk(req.session.user_id, {
+      include: [Stamp],
+    });
+    const user = dbUserData.get({ plain: true });
+    res.render("profile", {
+      firstName: dbUserData.first_name,
+      lastName: dbUserData.last_name,
+      country: dbUserData.user_home,
+      aboutMe: dbUserData.about_me,
+      photos: dbUserData.Photos,
+      destinationName: dbUserData.destination_name,
+      destinationNotes: dbUserData.destination_notes,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get("/profile", withAuth, async (req, res) => {
+  try {
+    const dbStampData = await Stamp.findByPk(req.session.user_id);
+    console.log(dbStampData);
+    res.render("profile", {
+      photos: dbStampData.Photos,
+      destinationName: dbStampData.destination_name,
+      destinationNotes: dbStampData.destination_notes,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get("/stamps/:id", withAuth, async (req, res) => {
+  try {
+    const dbStampData = await Stamp.findByPk(req.params.id, {
+      include: [Place, User, Photo],
+    });
+
+    if (!dbStampData) {
+      return res.status(404).json({ message: 'Stamp not found' });
+    }
+
+    const stamp = dbStampData.get({ plain: true });
+    const user = stamp.User;
+
+    logged = true;
+    // console.log(stamp);
+    
+    res.render("stamps", { stamp, user, logged, loggedIn: req.session.loggedIn });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get('/home', async (req, res) => {
+  try {
+    const user = await User.findAll({
+      include: [Stamp],
+    });
+    logged = true;
+
+    res.render('homepage', { user, logged, loggedIn: req.session.loggedIn });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+
 
 // router.get("/profile/stamps", async (req, res) => {
 //   try {
@@ -153,19 +234,19 @@ router.get("/profile", withAuth, async (req, res) => {
 // });
 
 //get one stamp
-router.get("/stamp/:id", async (req, res) => {
-  try {
-    const dbStampData = await Stamp.findByPk(req.params.id, {
-      include: [Place],
-      include: [Photo],
-    });
+// router.get("/stamp/:id", async (req, res) => {
+//   try {
+//     const dbStampData = await Stamp.findByPk(req.params.id, {
+//       include: [Place],
+//       include: [Photo],
+//     });
 
-    const stamp = dbStampData.get({ plain: true });
-    res.render("profile", { stamp, loggedIn: req.session.loggedIn });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
+//     const stamp = dbStampData.get({ plain: true });
+//     res.render("stamps", { stamp, loggedIn: req.session.loggedIn });
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+// });
 
 module.exports = router;

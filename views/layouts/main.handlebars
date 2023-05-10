@@ -26,12 +26,12 @@
       </h1>
       <nav>
         <!-- Conditionally render login or logout links -->
-        {{#if loggedIn}}
-        <a class="login-font" href="/login">login</a>
-        {{else}}
+        {{#if logged}}
         <a class="login-font" href="/profile">profile</a> |
         <a class="login-font" href="/home">home</a> |
         <button class="no-button" id="logout">logout</button>
+        {{else}}
+        <a class="login-font" href="/login">login</a>
         {{/if}}
       </nav>
     </header>

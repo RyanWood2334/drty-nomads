@@ -283,66 +283,20 @@
 </div>
 
 
-<div class="card mb-3" id="drty-card">
-  <div class="row no-gutters">
-    <div class="col-md-2">
-      <img src={{photos}} class="card-img" alt="avatar">
-    </div>
-    <div class="col-md-3">
+<div class="row">
+  {{#each stamp as |stamps|}}
+  <div class="col-md-4">
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="..." alt="Card image cap">
       <div class="card-body">
-        <p class="card-title">Name: {{destinationName}}</p>
-        <p class="card-text">Country: {{destinationNotes}}</p>
-        <p class="card-text">About me: {{photos}}</p>
-      </div>
-      <div class="col-md-7"></div>
-    </div>
-  </div>
-</div>
-
-
-
-{{!-- {{#if stamp.length}}
-<div class="row mt-4">
-  <div class="col-md-12">
-    <h3>Digital Passport stamps:</h3>
-
-    {{#each stamps as |stamp|}}
-    <div class="row mb-2">
-      <div class="col-md-4" id="stamps">
-        <h4><a href="/project/{{stamp.photos}}">{{stamp.destinationName}}</a><p>{{stamp.destinationNotes}}</p></h4>
-      <div class="col-md-8" id="movement">
-        <button class="btn btn-sm btn-danger button-72" data-id="{{stamp.id}}">DELETE</button>
-
-      </div>
+        <h5 class="card-title"><a href="/stamps/{{stamps.id}}">{{stamps.destination_name}}</a></h5>
+        <p class="card-text">{{stamps.destination_notes}}</p>
+        <button class="btn btn-sm btn-danger button-72" data-id="{{stamps.id}}">DELETE</button>
       </div>
     </div>
-    {{/each}}
   </div>
+  {{/each}}
 </div>
-{{/if}}
- --}}
-
-{{!-- 
-{{#if projects.length}}
-<div class="row mt-4">
-  <div class="col-md-12">
-    <h3>Digital Passport Stamps:</h3>
-
-    {{#each projects as |project|}}
-    <div class="row mb-2">
-      <div class="col-md-4" id="stamps">
-        <h4><a href="/project/{{project.id}}">{{project.name}}</a><p>{{project.description}}</p></h4>
-      <div class="col-md-8" id="movement">
-        <button class="btn btn-sm btn-danger button-72" data-id="{{project.id}}">DELETE</button>
-
-      </div>
-      </div>
-    </div>
-    {{/each}}
-  </div>
-</div>
-{{/if}}
- --}}
 
 
 <script 

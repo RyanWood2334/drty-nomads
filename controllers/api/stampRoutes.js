@@ -8,11 +8,11 @@ router.post("/", async (req, res) => {
   }
   try {
     const newStamp = await Stamp.create({
-      ...req.body,
+      // ...req.body,
       ...req.body,
       //add image url here?
       UserId: req.session.user_id,
-      UserId: req.session.user_id,
+      // UserId: req.session.user_id,
     });
 
 
@@ -50,7 +50,7 @@ router.delete("/:id", async (req, res) => {
     const projectData = await Stamp.destroy({
       where: {
         id: req.params.id,
-        user_id: req.session.user_id,
+        UserId: req.session.user_id,
       },
     });
 
@@ -68,10 +68,11 @@ router.delete("/:id", async (req, res) => {
 //test route for looking at seeds (we can comment out at any  time)
 router.get("/", (req, res) => {
   Stamp.findAll({
-    include: [User],
-    include: [Photo],
-    include: [User],
-    include: [Photo],
+    include: [{model:Place}],
+    include: [{model:User}],
+    include: [{model:Photo}],
+    include: [{model:Stamp}],
+    
   })
     .then((stamps) => {
       res.json(stamps);
@@ -82,19 +83,6 @@ router.get("/", (req, res) => {
     });
 });
 
-router.get("/:id", async (req, res) => {
-  try {
-    const dbStampData = await Stamp.findByPk(req.params.id, {
-      include: [Place],
-      include: [Photo],
-    });
 
-    const stamp = dbStampData.get({ plain: true });
-    res.render("profile", { stamp, loggedIn: req.session.loggedIn });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
 
 module.exports = router;
