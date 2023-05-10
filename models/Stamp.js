@@ -17,6 +17,10 @@ Stamp.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
+    likes:{
+      type:DataTypes.INTEGER,
+      allowNull: true
+    }
     //**foreign key: dest_id will auto generate
   },
   {
