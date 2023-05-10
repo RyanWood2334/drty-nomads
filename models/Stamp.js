@@ -17,6 +17,11 @@ Stamp.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
+    photo_url: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+
     //**foreign key: dest_id will auto generate
   },
   {
