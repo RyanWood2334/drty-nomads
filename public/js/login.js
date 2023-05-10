@@ -29,9 +29,9 @@ const signupFormHandler = async (event) => {
   const last_name = document.querySelector("#last_name-signup").value.trim();
   const username = document.querySelector("#username-signup").value.trim();
   const password = document.querySelector("#password-signup").value.trim();
-  const profile_pic = document
-    .querySelector("#profile_pic-signup")
-    .value.trim();
+  // const profile_pic = document
+  //   .querySelector("#profile_pic-signup")
+  //   .value.trim();
   const user_age = document.querySelector("#user_age-signup").value.trim();
   const user_home = document.querySelector("#user_home-signup").value.trim();
   const about_me = document.querySelector("#about_me-signup").value.trim();
@@ -44,7 +44,7 @@ const signupFormHandler = async (event) => {
         last_name,
         username,
         password,
-        profile_pic,
+        // profile_pic,
         user_age,
         user_home,
         about_me,

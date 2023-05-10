@@ -8,6 +8,14 @@ header, .project:not(:last-child) {
   object-fit: cover;
   }
 
+  #singleton {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    max-width: 700px;
+  }
+  
+
   #move-buttons{
     position: relative;
     display: flex;
