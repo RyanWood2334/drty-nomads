@@ -3,13 +3,13 @@
 <div class="card mb-3" id="drty-card">
   <div class="row no-gutters">
     <div class="col-md-2">
-      <img src={{profilePic}} class="card-img" alt="avatar">
+      <img src={{user.profile_pic}} class="card-img" alt="avatar">
     </div>
     <div class="col-md-3">
       <div class="card-body">
-        <p class="card-title">Name: {{firstName}} {{lastName}}</p>
-        <p class="card-text">Country: {{country}}</p>
-        <p class="card-text">About me: {{aboutMe}}</p>
+        <p class="card-title">Name: {{user.first_name}} {{user.last_name}}</p>
+        <p class="card-text">Country: {{user.user_home}}</p>
+        <p class="card-text">About me: {{user.about_me}}</p>
       </div>
       <div class="col-md-7"></div>
     </div>
