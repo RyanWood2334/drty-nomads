@@ -66,21 +66,31 @@ router.delete("/:id", async (req, res) => {
 });
 
 //test route for looking at seeds (we can comment out at any  time)
-router.get("/", (req, res) => {
-  Stamp.findAll({
-    include: [{model:Place}],
-    include: [{model:User}],
-    include: [{model:Photo}],
-    include: [{model:Stamp}],
+// router.get("/", (req, res) => {
+//   Stamp.findAll({
+//     include: [{model:Place}],
+//     include: [{model:User}],
+//     include: [{model:Photo}],
+//     include: [{model:Stamp}],
     
-  })
-    .then((stamps) => {
-      res.json(stamps);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({ msg: "error occurred", err });
-    });
+//   })
+//     .then((stamps) => {
+//       res.json(stamps);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//       res.status(500).json({ msg: "error occurred", err });
+//     });
+// });
+
+router.get("/", async (req, res) => {
+  try {
+    const stamps = await Stamp.findAll();
+    res.json(stamps);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ msg: "error occurred", err });
+  }
 });
 
 
