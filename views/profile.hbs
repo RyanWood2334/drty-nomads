@@ -1,3 +1,5 @@
+
+
 <div class="card mb-3" id="drty-card">
   <div class="row no-gutters">
     <div class="col-md-2">
@@ -20,11 +22,6 @@
 
 
 
-
-
-
-
-
 <!-- Add a button to show/hide the form -->
 
 <img src="https://i.ibb.co/1QTM68S/my-dashboard-html-1.png"  id="new-stamp-btn"></img>
@@ -35,32 +32,267 @@
       <img src="" hidden="hidden" id="ac-img">
     <div class="form-group">
       <label for="project-name">Destination:</label>
-      <input class="form-input" type="text" id="project-name" name="project-name" />
+      <input class="typeahead form-control" type="text" id="project-name" name="project-name" placeholder="What magical place did you go?"/>
+      <script>
+		// Define the data array
+		var places = [
+  "Afghanistan",
+  "Albania",
+  "Algeria",
+  "Andorra",
+  "Angola",
+  "Antigua and Barbuda",
+  "Argentina",
+  "Armenia",
+  "Australia",
+  "Austria",
+  "Azerbaijan",
+  "Bahamas",
+  "Bahrain",
+  "Bangladesh",
+  "Barbados",
+  "Belarus",
+  "Belgium",
+  "Belize",
+  "Benin",
+  "Bhutan",
+  "Bolivia",
+  "Bosnia and Herzegovina",
+  "Botswana",
+  "Brazil",
+  "Brunei",
+  "Bulgaria",
+  "Burkina Faso",
+  "Burundi",
+  "Cabo Verde",
+  "Cambodia",
+  "Cameroon",
+  "Canada",
+  "Central African Republic",
+  "Chad",
+  "Chile",
+  "China",
+  "Colombia",
+  "Comoros",
+  "Congo, Democratic Republic of the",
+  "Congo, Republic of the",
+  "Costa Rica",
+  "Côte d'Ivoire",
+  "Croatia",
+  "Cuba",
+  "Cyprus",
+  "Czech Republic",
+  "Denmark",
+  "Djibouti",
+  "Dominica",
+  "Dominican Republic",
+  "Ecuador",
+  "Egypt",
+  "El Salvador",
+  "Equatorial Guinea",
+  "Eritrea",
+  "Estonia",
+  "Eswatini (formerly Swaziland)",
+  "Ethiopia",
+  "Fiji",
+  "Finland",
+  "France",
+  "Gabon",
+  "Gambia",
+  "Georgia",
+  "Germany",
+  "Ghana",
+  "Greece",
+  "Grenada",
+  "Guatemala",
+  "Guinea",
+  "Guinea-Bissau",
+  "Guyana",
+  "Haiti",
+  "Honduras",
+  "Hungary",
+  "Iceland",
+  "India",
+  "Indonesia",
+  "Iran",
+  "Iraq",
+  "Ireland",
+  "Israel",
+  "Italy",
+  "Jamaica",
+  "Japan",
+  "Jordan",
+  "Kazakhstan",
+  "Kenya",
+  "Kiribati",
+  "Kosovo",
+  "Kuwait",
+  "Kyrgyzstan",
+  "Laos",
+  "Latvia",
+  "Lebanon",
+  "Lesotho",
+  "Liberia",
+  "Libya",
+  "Liechtenstein",
+  "Lithuania",
+  "Luxembourg",
+  "Madagascar",
+  "Malawi",
+  "Malaysia",
+  "Maldives",
+  "Mali",
+  "Malta",
+  "Marshall Islands",
+  "Mauritania",
+  "Mauritius",
+  "Mexico",
+  "Micronesia",
+  "Moldova",
+  "Monaco",
+  "Mongolia",
+  "Montenegro",
+  "Morocco",
+  "Mozambique",
+  "Myanmar (formerly Burma)",
+  "Namibia",
+  "Nauru",
+  "Nepal",
+  "Netherlands",
+  "New Zealand",
+  "Nicaragua",
+  "Niger",
+  "Nigeria",
+  "North Korea",
+  "North Macedonia (formerly Macedonia)",
+  "Norway",
+  "Oman",
+  "Pakistan",
+  "Palau",
+  "Palestine",
+  "Panama",
+  "Papua New Guinea",
+  "Paraguay",
+  "Peru",
+  "Philippines",
+  "Poland",
+  "Portugal",
+  "Qatar",
+  "Romania",
+  "Russia",
+  "Rwanda",
+  "Saint Kitts and Nevis",
+  "Saint Lucia",
+  "Saint Vincent and the Grenadines",
+  "Samoa",
+  "San Marino",
+  "Sao Tome and Principe",
+  "Saudi Arabia",
+  "Senegal",
+  "Serbia",
+  "Seychelles",
+  "Sierra Leone",
+  "Singapore",
+  "Slovakia",
+  "Slovenia",
+  "Solomon Islands",
+  "Somalia",
+  "South Africa",
+  "South Korea",
+  "South Sudan",
+  "Spain",
+  "Sri Lanka",
+  "Sudan",
+  "Suriname",
+  "Sweden",
+  "Switzerland",
+  "Syria",
+  "Taiwan",
+  "Tajikistan",
+  "Tanzania",
+  "Thailand",
+  "Timor-Leste (formerly East Timor)",
+  "Togo",
+  "Tonga",
+  "Trinidad and Tobago",
+  "Tunisia",
+  "Turkey",
+  "Turkmenistan",
+  "Tuvalu",
+  "Uganda",
+  "Ukraine",
+  "United Arab Emirates",
+  "United Kingdom",
+  "United States of America",
+  "Uruguay",
+  "Uzbekistan",
+  "Vanuatu",
+  "Vatican City (Holy See)",
+  "Venezuela",
+  "Vietnam",
+  "Yemen",
+  "Zambia",
+  "Zimbabwe"]
+
+		// Initialize the typeahead
+		$('#project-name').typeahead({
+			hint: true,
+			highlight: true,
+			minLength: 1
+		},
+		{
+			name: 'places',
+			source: substringMatcher(places)
+		});
+
+		// Define the substring matcher function
+		function substringMatcher(strs) {
+			return function findMatches(q, cb) {
+				var matches, substringRegex;
+
+				// an array that will be populated with substring matches
+				matches = [];
+
+				// regex used to determine if a string contains the substring `q`
+				substrRegex = new RegExp(q, 'i');
+
+				// iterate through the pool of strings and for any string that
+				// contains the substring `q`, add it to the `matches` array
+				$.each(strs, function(i, str) {
+					if (substrRegex.test(str)) {
+						matches.push(str);
+					}
+				});
+
+				cb(matches);
+			};
+		};
+	</script>
     </div>
     <div class="form-group">
-      <label for="project-funding">Photo Upload:</label>
-      <input class="form-input" type="number" id="project-funding" name="project-funding" />
+      <button type="click" class="btn btn-primary button-72" id="add-photo-btn" >Upload Photos from your destination!</button>
     </div>
+   
     <div class="form-group">
-      <label for="project-desc">Talk about it:</label>
+      <label for="project-desc">Tell us about your trip!:</label>
       <textarea class="form-input" id="project-desc" name="project-desc"></textarea>
     </div>
     <div class="form-group">
-      <button type="submit" class="btn btn-primary button-72">Create</button>
+      <button type="submit" class="btn btn-primary button-72">Create Stamp</button>
     </div>
   </form>
 </div>
 
 
 <div class="row">
-  {{#each stamp}}
+  {{#each stamp as |stamps|}}
   <div class="col-md-4">
     <div class="card" style="width: 18rem;">
       <img class="card-img-top" src="" alt="Card image cap">
       <div class="card-body">
-        <h5 class="card-title"><a href="/stamp/{{this.id}}">{{this.destination_name}}</a></h5>
-        <p class="card-text">{{this.destination_notes}}</p>
-        <button class="btn btn-sm btn-danger button-72" data-id="{{this.id}}">DELETE</button>
+        <h5 class="card-title"><a href="/stamps/{{stamps.id}}">{{stamps.destination_name}}</a></h5>
+        <p class="card-text">{{stamps.destination_notes}}</p>
+        <button class="btn btn-sm btn-danger button-72" data-id="{{stamps.id}}">DELETE</button>
       </div>
     </div>
   </div>
@@ -68,7 +300,11 @@
 </div>
 
 
+<script 
+     src="https://widget.cloudinary.com/v2.0/global/all.js" 
+     type="text/javascript">
+    </script>
 <script src="./js/profile.js"></script>
 <script async
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAIk5S7rzUpcVbpZeC5cXUUF4wmabunkM&libraries=places&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key={{ mapsApiKey }}&libraries=places&callback=initMap">
 </script>

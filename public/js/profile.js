@@ -19,7 +19,7 @@ const newFormHandler = async (event) => {
     if (response.ok) {
       document.location.replace("/profile");
     } else {
-      alert("Failed to create project");
+      alert("Failed to create stamp");
     }
   }
 };
@@ -39,6 +39,54 @@ deleteButtons.forEach((button) => {
       alert("Failed to delete project");
     }
   });
+});
+
+const uploadPhotoBtn = document.querySelector("#add-photo-btn");
+
+const myWidget = cloudinary.createUploadWidget(
+  {
+    cloudName: "duaznt4wg",
+    uploadPreset: "drty_nomads_upload",
+    sources: ["local", "url", "facebook", "instagram", "google_drive"],
+    multiple: true,
+    maxfiles: 5,
+    styles: {
+      palette: {
+        window: "#B55419",
+        windowBorder: "#66350F",
+        tabIcon: "#7519B5",
+        menuIcons: "#7519B5",
+        textDark: "#FFFFF",
+        textLight: "#00000",
+        link: "#0078FF",
+        action: "#FF620C",
+        inactiveTabIcon: "#0E2F5A",
+        error: "#F44235",
+        inProgress: "#0078FF",
+        complete: "#20B832",
+        sourceBg: "#E4EBF1",
+      },
+      frame: {
+        background: "#7519B5",
+      },
+      fonts: {
+        "'Cute Font', cursive":
+          "https://fonts.googleapis.com/css?family=Cute+Font",
+      },
+    },
+  },
+  (error, result) => {
+    if (!error && result && result.event === "success") {
+      console.log("Done! Here is the image info: ", result.info);
+      document
+        .getElementById("uploadedimage")
+        .setAttribute("src", result.info.secure_url);
+    }
+  }
+);
+
+uploadPhotoBtn.addEventListener("click", function () {
+  myWidget.open();
 });
 
 const newStampBtn = document.querySelector("#new-stamp-btn");
@@ -62,6 +110,7 @@ document
   .querySelector(".new-project-form")
   .addEventListener("submit", newFormHandler);
 
+// google maps API
 async function initMap() {
   const img = document.getElementById('ac-img');
   console.log('maps init!');
@@ -72,16 +121,16 @@ async function initMap() {
   const autocomplete = new google.maps.places.Autocomplete(el, options);
 
   // Adds pictures
-  autocomplete.addListener('place_changed', (c) => {
-    const place = autocomplete.getPlace();
-    if (place.photos.length > 0) {
-      const url = place.photos[0].getUrl({
-        maxWidth: 800,
-        maxHeight: 400,
-      })
-      img.removeAttribute('hidden');
-      img.setAttribute('src', url)
-      console.log(url);
-    }
-  })
+  // autocomplete.addListener('place_changed', (c) => {
+  //   const place = autocomplete.getPlace();
+  //   if (place.photos.length > 0) {
+  //     const url = place.photos[0].getUrl({
+  //       maxWidth: 800,
+  //       maxHeight: 400,
+  //     })
+  //     img.removeAttribute('hidden');
+  //     img.setAttribute('src', url)
+  //     console.log(url);
+  //   }
+  // })
 }

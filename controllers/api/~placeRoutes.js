@@ -34,9 +34,9 @@ router.get("/:id", (req, res) => {
 //create new place (future dev)
 router.post("/", (req, res) => {
   Place.create({
-    place_name: req.body.place_name,
-    place_sub_region: req.body.place_sub_region,
-    place_language: req.body.place_language,
+    place_name: req.body.name,
+    place_sub_region: req.body.sub_region,
+    place_language: req.body.language,
   })
     .then((newPlace) => {
       res.json(newPlace);
