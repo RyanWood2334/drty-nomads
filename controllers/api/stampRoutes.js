@@ -26,15 +26,19 @@ router.post("/", async (req, res) => {
 router.put("/:id/like", (req,res)=>{
   Stamp.findOne({where:{id: req.params.id}}).then(data=>{
     const stampData = data;
-    const like = stampData.like;
-    Stamp.update({likes:like++},{where:{id:req.params.id}}).then(data=>{
-      res.json(data);
+    Stamp.update({likes:stampData.likes + 1},{where:{id:req.params.id}}).then(data=>{
+      res.json({message: "Likes updated!"});
     }).catch(err=>{
       console.log(err);
       res.status(500).json({msg:"invalid syntax hence ,error occurred",err})
-    }) 
+    })
   })
- 
+})
+
+router.get("/:id/", (req,res)=>{
+  Stamp.findOne({where:{id: req.params.id}}).then(data=>{
+    res.json(data);
+  })
 })
 
  
