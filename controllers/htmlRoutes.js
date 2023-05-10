@@ -110,8 +110,13 @@ router.get("/profile", withAuth, async (req, res) => {
     const logged = true;
 
     console.log(stamp);
-
-    res.render(`profile`, { user, stamp,logged, loggedIn:req.session.loggedIn,
+// add google maps api key
+    res.render(`profile`, {
+      user,
+      stamp,
+      logged,
+      loggedIn: req.session.loggedIn,
+      mapsApiKey: process.env.MAPS_API_KEY,
      });
   } catch (err) {
     console.log(err);
