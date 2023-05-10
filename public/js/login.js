@@ -21,6 +21,7 @@ const loginFormHandler = async (event) => {
     }
   }
 };
+let profilePicUploadUrl = "";
 
 const signupFormHandler = async (event) => {
   event.preventDefault();
@@ -29,14 +30,20 @@ const signupFormHandler = async (event) => {
   const last_name = document.querySelector("#last_name-signup").value.trim();
   const username = document.querySelector("#username-signup").value.trim();
   const password = document.querySelector("#password-signup").value.trim();
-  // const profile_pic = document
-  //   .querySelector("#profile_pic-signup")
-  //   .value.trim();
   const user_age = document.querySelector("#user_age-signup").value.trim();
   const user_home = document.querySelector("#user_home-signup").value.trim();
   const about_me = document.querySelector("#about_me-signup").value.trim();
+  const profile_pic = profilePicUploadUrl;
 
-  if (first_name && username && password) {
+  if (
+    first_name &&
+    username &&
+    password &&
+    user_age &&
+    user_home &&
+    about_me &&
+    profile_pic
+  ) {
     const response = await fetch("/api/users", {
       method: "POST",
       body: JSON.stringify({
@@ -61,11 +68,59 @@ const signupFormHandler = async (event) => {
     }
   }
 };
+document
+  .querySelector(".signup-form")
+  .addEventListener("submit", signupFormHandler);
+
+// Function to handle photo upload
+const profilePicBtn = document.querySelector("#profile-pic-btn");
+const myWidget = cloudinary.createUploadWidget(
+  {
+    cloudName: "duaznt4wg",
+    uploadPreset: "drty_nomads_upload",
+    sources: ["local", "url", "facebook", "instagram", "google_drive"],
+    multiple: true,
+    maxfiles: 5,
+    styles: {
+      palette: {
+        window: "#B55419",
+        windowBorder: "#66350F",
+        tabIcon: "#7519B5",
+        menuIcons: "#7519B5",
+        textDark: "#FFFFF",
+        textLight: "#00000",
+        link: "#0078FF",
+        action: "#FF620C",
+        inactiveTabIcon: "#0E2F5A",
+        error: "#F44235",
+        inProgress: "#0078FF",
+        complete: "#20B832",
+        sourceBg: "#E4EBF1",
+      },
+      frame: {
+        background: "#7519B5",
+      },
+      fonts: {
+        "'Cute Font', cursive":
+          "https://fonts.googleapis.com/css?family=Cute+Font",
+      },
+    },
+  },
+  (err, result) => {
+    if (!err && result && result.event === "success") {
+      console.log("Done! Here is the image info: ", result.info);
+      profilePicUploadUrl = result.info.url;
+      console.log("uploaded-pic-URL", profilePicUploadUrl);
+      window.alert("picture uploaded!");
+      document.getElementById("profile-pic-btn");
+    }
+  }
+);
+
+profilePicBtn.addEventListener("click", function () {
+  myWidget.open();
+});
 
 document
   .querySelector(".login-form")
   .addEventListener("submit", loginFormHandler);
-
-document
-  .querySelector(".signup-form")
-  .addEventListener("submit", signupFormHandler);

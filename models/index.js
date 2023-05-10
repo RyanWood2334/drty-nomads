@@ -25,11 +25,9 @@ User.belongsTo(Stamp, {
 //    onDelete: "SET NULL",
 //  });
 
- Stamp.belongsTo(Place, {
+Stamp.belongsTo(Place, {
   onDelete: "SET NULL",
 });
-
- 
 
 module.exports = {
   User: User,
