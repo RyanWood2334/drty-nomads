@@ -11,6 +11,7 @@ router.post("/", async (req, res) => {
       ...req.body,
       //add image url here?
       UserId: req.session.user_id,
+      UserId: req.session.user_id,
     });
 
     res.status(200).json(newStamp);
