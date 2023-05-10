@@ -9,10 +9,12 @@ router.post("/", async (req, res) => {
   try {
     const newStamp = await Stamp.create({
       ...req.body,
+      ...req.body,
       //add image url here?
       UserId: req.session.user_id,
       UserId: req.session.user_id,
     });
+
 
     res.status(200).json(newStamp);
   } catch (err) {
@@ -66,6 +68,8 @@ router.delete("/:id", async (req, res) => {
 //test route for looking at seeds (we can comment out at any  time)
 router.get("/", (req, res) => {
   Stamp.findAll({
+    include: [User],
+    include: [Photo],
     include: [User],
     include: [Photo],
   })

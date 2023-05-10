@@ -5,6 +5,24 @@ const withAuth = require("../utils/auth");
 router.get("/", async (req, res) => {
   try {
     // Pass serialized data and session flag into template
+    res.render('logohome', { 
+      // projects, 
+      logged_in: req.session.logged_in 
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get("/", async (req, res) => {
+    try {
+        const userData = await User.findAll({
+      attributes: { exclude: ["password"] },
+      order: [["name", "ASC"]],
+    });
+
+    const users = userData.map((project) => project.get({ plain: true }));
+
     res.render("logohome", {
       // projects,
       logged_in: req.session.logged_in,
@@ -100,43 +118,50 @@ router.get("/profile", withAuth, async (req, res) => {
   }
 });
 
-//get one stamp
-// router.get("/stamp/:id", async (req, res) => {
-//   try {
-//     const dbStampData = await Stamp.findByPk(req.params.id, {
-//       include: [Place],
-//       include: [Photo],
-//     });
+//get one user
+router.get("/profile", withAuth, async (req, res) => {
+  try {
+    const dbUserData = await User.findByPk(req.session.user_id);
+    res.render("profile", { firstName: dbUserData.first_name, lastName: dbUserData.last_name, country: dbUserData.user_home , aboutMe: dbUserData.about_me });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
-//     const stamp = dbStampData.get({ plain: true });
-//     res.render("stamp", { stamp, loggedIn: req.session.loggedIn });
+// router.get("/profile/stamps", async (req, res) => {
+//   try {
+//     const dbUserData = await Stamp.findAll({
+//       include: [
+//         {
+//           model: Stamp,
+//           attributes: ["destination_name" , "destination_notes"],
+          
+//         },
+//       ],
+//     });
+//     const stamps = dbUserData.map((users)=> users.get({plain:true}))
+//     res.render("profile", {
+//       stamps,
+//       loggedIn: req.session.loggedIn,
+//     });
+    
 //   } catch (err) {
 //     console.log(err);
 //     res.status(500).json(err);
 //   }
 // });
 
-
-
-router.get("/profile/stamps", withAuth, async (req, res) => {
+//get one stamp
+router.get("/stamp/:id", async (req, res) => {
   try {
-    const dbStampData = await Stamp.findAll({
-      where: {
-        user_id: req.session.user_id,
-      },
-      include: [
-        {
-          model: Place,
-        },
-      ],
+    const dbStampData = await Stamp.findByPk(req.params.id, {
+      include: [Place],
+      include: [Photo],
     });
 
-    const stamps = dbStampData.map((stamp) => stamp.get({ plain: true }));
-
-    res.render("profile", {
-      stamps,
-      loggedIn: req.session.loggedIn,
-    });
+    const stamp = dbStampData.get({ plain: true });
+    res.render("profile", { stamp, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
