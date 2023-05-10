@@ -106,11 +106,12 @@ router.get("/profile", withAuth, async (req, res) => {
     const user = dbUserData.get({ plain: true });
 
     const stamp = user.Stamps;
-    
 
-    console.log(req.session.loggedIn);
+    const logged = true;
 
-    res.render(`profile`, { user, stamp, loggedIn:req.session.loggedIn,
+    console.log(stamp);
+
+    res.render(`profile`, { user, stamp,logged, loggedIn:req.session.loggedIn,
      });
   } catch (err) {
     console.log(err);

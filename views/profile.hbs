@@ -50,62 +50,22 @@
   </form>
 </div>
 
-<!--{{#if projects.length}}
-<div class="row mt-4">
-  <div class="col-md-12">
-    <h3>Digital Passport Stamps:</h3>
 
-    {{#each projects as |project|}}
-    <div class="row mb-2">
-      <div class="col-md-4" id="stamps">
-        <h4><a href="/project/{{project.id}}">{{project.name}}</a><p>{{project.description}}</p></h4>
-      <div class="col-md-8" id="movement">
-        <button class="btn btn-sm btn-danger button-72" data-id="{{project.id}}">DELETE</button>
-
-      </div>
-      </div>
-    </div>
-    {{/each}}
-  </div>
-</div>
-{{/if}} -->
-<!--
-{{#if stamps.stamps}}
-<div class="row mt-4">
-  <div class="col-md-12">
-    <h3>Digital Passport Stamps:</h3>
-    {{#each stamps.stamps}}
-    <div class="row mb-2">
-      <div class="col-md-4" id="stamps">
-        <h4><a href="/stamp/{{stamps.id}}">{{stamps.destination_name}}</a></h4>
-        <p>{{stamps.destination_notes}}</p>
-      </div>
-      <div class="col-md-8" id="movement">
-        <button class="btn btn-sm btn-danger button-72" data-id="{{id}}">DELETE</button>
-      </div>
-    </div>
-    {{/each}}
-  </div>
-</div>
-{{/if}}
-
--->
-{{#each stamp}}
-<div class="card mb-3" id="drty-card">
-  <div class="row no-gutters">
-    <div class="col-md-2">
-      <img src={{user.profile_pic}} class="card-img" alt="avatar">
-    </div>
-    <div class="col-md-3">
+<div class="row">
+  {{#each stamp}}
+  <div class="col-md-4">
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="..." alt="Card image cap">
       <div class="card-body">
-        <p class="card-title">Where ya been and what ya did: {{this.destination_name}} {{this.destination_notes}}</p>
-        
+        <h5 class="card-title"><a href="/stamp/{{this.id}}">{{this.destination_name}}</a></h5>
+        <p class="card-text">{{this.destination_notes}}</p>
+        <button class="btn btn-sm btn-danger button-72" data-id="{{this.id}}">DELETE</button>
       </div>
-      <div class="col-md-7"></div>
     </div>
   </div>
+  {{/each}}
 </div>
-{{/each}}
+
 
 <script src="./js/profile.js"></script>
 
