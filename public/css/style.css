@@ -7,6 +7,19 @@ header, .project:not(:last-child) {
   height: 200px;
   object-fit: cover;
   }
+
+  #move-buttons{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    bottom: 0;
+    left: 0;  
+  padding-bottom: 50px;}
+
+  #relative{
+    position: relative;
+  }
   
   .no-button {
     background: none;
