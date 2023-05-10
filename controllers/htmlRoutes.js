@@ -171,6 +171,45 @@ router.get("/profile", withAuth, async (req, res) => {
   }
 });
 
+router.get("/stamps/:id", withAuth, async (req, res) => {
+  try {
+    const dbStampData = await Stamp.findByPk(req.params.id, {
+      include: [Place, User, Photo],
+    });
+
+    if (!dbStampData) {
+      return res.status(404).json({ message: 'Stamp not found' });
+    }
+
+    const stamp = dbStampData.get({ plain: true });
+    const user = stamp.User;
+
+    logged = true;
+    // console.log(stamp);
+    
+    res.render("stamps", { stamp, user, logged, loggedIn: req.session.loggedIn });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get('/home', async (req, res) => {
+  try {
+    const user = await User.findAll({
+      include: [Stamp],
+    });
+    logged = true;
+
+    res.render('homepage', { user, logged, loggedIn: req.session.loggedIn });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+
+
 // router.get("/profile/stamps", async (req, res) => {
 //   try {
 //     const dbUserData = await Stamp.findAll({
@@ -195,19 +234,19 @@ router.get("/profile", withAuth, async (req, res) => {
 // });
 
 //get one stamp
-router.get("/stamp/:id", async (req, res) => {
-  try {
-    const dbStampData = await Stamp.findByPk(req.params.id, {
-      include: [Place],
-      include: [Photo],
-    });
+// router.get("/stamp/:id", async (req, res) => {
+//   try {
+//     const dbStampData = await Stamp.findByPk(req.params.id, {
+//       include: [Place],
+//       include: [Photo],
+//     });
 
-    const stamp = dbStampData.get({ plain: true });
-    res.render("profile", { stamp, loggedIn: req.session.loggedIn });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
+//     const stamp = dbStampData.get({ plain: true });
+//     res.render("stamps", { stamp, loggedIn: req.session.loggedIn });
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+// });
 
 module.exports = router;
