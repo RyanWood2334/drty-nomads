@@ -52,19 +52,20 @@
 
 
 <div class="row">
-  {{#each stamp}}
+  {{#each stamp as |stamps|}}
   <div class="col-md-4">
     <div class="card" style="width: 18rem;">
       <img class="card-img-top" src="..." alt="Card image cap">
       <div class="card-body">
-        <h5 class="card-title"><a href="/stamp/{{this.id}}">{{this.destination_name}}</a></h5>
-        <p class="card-text">{{this.destination_notes}}</p>
-        <button class="btn btn-sm btn-danger button-72" data-id="{{this.id}}">DELETE</button>
+        <h5 class="card-title"><a href="/stamps/{{stamps.id}}">{{stamps.destination_name}}</a></h5>
+        <p class="card-text">{{stamps.destination_notes}}</p>
+        <button class="btn btn-sm btn-danger button-72" data-id="{{stamps.id}}">DELETE</button>
       </div>
     </div>
   </div>
   {{/each}}
 </div>
+
 
 
 <script src="./js/profile.js"></script>
