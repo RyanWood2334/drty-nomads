@@ -7,6 +7,16 @@ header, .project:not(:last-child) {
   height: 200px;
   object-fit: cover;
   }
+
+  #move-buttons{
+    position: absolute;
+    justify-content: center !important;
+    bottom: 0;
+    left: 0;  }
+
+  #relative{
+    position: relative;
+  }
   
   .no-button {
     background: none;
