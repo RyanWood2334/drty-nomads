@@ -110,6 +110,9 @@ const showNewStampForm = () => {
 };
 newStampBtn.addEventListener("click", showNewStampForm);
 
+
+
+
 // Event listener for form submission
 document.querySelector(".new-project-form").addEventListener("submit", newFormHandler);
 
