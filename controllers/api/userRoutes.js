@@ -72,15 +72,15 @@ router.post("/logout", (req, res) => {
 });
 
 //test route for looking at seeds (we can comment out at any  time)
-router.get("/", (req, res) => {
-  User.findAll()
-    .then((users) => {
-      res.json(users);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({ msg: "error occurred", err });
-    });
-});
+// router.get("/", (req, res) => {
+//   User.findAll()
+//     .then((users) => {
+//       res.json(users);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//       res.status(500).json({ msg: "error occurred", err });
+//     });
+// });
 
 module.exports = router;

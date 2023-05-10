@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User } = require("../../models");
+const { User,Stamp,Place,Photo } = require("../../models");
 
 const userRoutes = require("./userRoutes");
 const stampRoutes = require("./stampRoutes");
