@@ -2,12 +2,12 @@ const sequelize = require("../config/connection");
 const { User, Stamp, Place, Photo } = require("../models");
 const photoData = require("./photo-seeds.json");
 const placeData = require("./place-seeds.json");
-const stampData = require("./stamp-seeds.json");
 const userData = require("./user-seeds.json");
+const stampData = require("./stamp-seeds.json");
 
 const seedDatabase = async () => {
   try {
-    await sequelize.sync({ force: false });
+    await sequelize.sync({ force: true });
 
     await User.bulkCreate(userData, {
       individualHooks: true,

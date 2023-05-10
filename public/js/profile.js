@@ -3,21 +3,18 @@ const newFormHandler = async (event) => {
   event.preventDefault();
 
   const destination_name = document.querySelector("#project-name").value.trim();
-  let photo = "";
+  // let photo = "";
   const destination_notes = document
     .querySelector("#project-desc")
     .value.trim();
 
+  const photo_url = picUploadUrl;
   // Get the uploaded photo URL
-  const uploadedImg = document.getElementById("uploadedimage");
-  if (uploadedImg && uploadedImg.src) {
-    photo = uploadedImg.src;
-  }
 
-  if (destination_name && destination_notes) {
+  if (destination_name && destination_notes && photo_url) {
     const response = await fetch(`/api/stamps`, {
       method: "POST",
-      body: JSON.stringify({ destination_name, photo, destination_notes }),
+      body: JSON.stringify({ destination_name, photo_url, destination_notes }),
       headers: {
         "Content-Type": "application/json",
       },
@@ -30,7 +27,6 @@ const newFormHandler = async (event) => {
     }
   }
 };
-
 
 // Function to handle deletion of stamps
 const deleteButtons = document.querySelectorAll("[data-id]");
@@ -50,6 +46,7 @@ deleteButtons.forEach((button) => {
   });
 });
 
+let picUploadUrl = "";
 // Function to handle photo upload
 const uploadPhotoBtn = document.querySelector("#add-photo-btn");
 const myWidget = cloudinary.createUploadWidget(
@@ -84,11 +81,17 @@ const myWidget = cloudinary.createUploadWidget(
       },
     },
   },
-  (error, result) => {
-    if (!error && result && result.event === "success") {
+  (err, result) => {
+    if (!err && result && result.event === "success") {
       console.log("Done! Here is the image info: ", result.info);
-      document.getElementById("uploadedimage").setAttribute("src", result.info.secure_url);
+      picUploadUrl = result.info.url;
+      console.log("uploaded-pic-URL", picUploadUrl);
     }
+
+    // console.log("Done! Here is the image info: ", result.info);
+    // document
+    //   .getElementById("card-img-top")
+    //   .setAttribute("src", result.info.url);
   }
 );
 uploadPhotoBtn.addEventListener("click", function () {
@@ -97,7 +100,9 @@ uploadPhotoBtn.addEventListener("click", function () {
 
 // Function to show/hide new stamp form
 const newStampBtn = document.querySelector("#new-stamp-btn");
-const newStampFormContainer = document.querySelector("#new-stamp-form-container");
+const newStampFormContainer = document.querySelector(
+  "#new-stamp-form-container"
+);
 let n = 0;
 const showNewStampForm = () => {
   if (n == 0) {
@@ -114,29 +119,31 @@ newStampBtn.addEventListener("click", showNewStampForm);
 
 
 // Event listener for form submission
-document.querySelector(".new-project-form").addEventListener("submit", newFormHandler);
+document
+  .querySelector(".new-project-form")
+  .addEventListener("submit", newFormHandler);
 
 // google maps API
 async function initMap() {
-  const img = document.getElementById('ac-img');
-  console.log('maps init!');
-  const el = document.getElementById('project-name');
+  const img = document.getElementById("ac-img");
+  console.log("maps init!");
+  const el = document.getElementById("project-name");
   const options = {
     types: ["locality", "country", "administrative_area_level_1"],
-  }
+  };
   const autocomplete = new google.maps.places.Autocomplete(el, options);
 
   // Adds pictures
-  // autocomplete.addListener('place_changed', (c) => {
+  // autocomplete.addListener("place_changed", (c) => {
   //   const place = autocomplete.getPlace();
   //   if (place.photos.length > 0) {
   //     const url = place.photos[0].getUrl({
   //       maxWidth: 800,
   //       maxHeight: 400,
-  //     })
-  //     img.removeAttribute('hidden');
-  //     img.setAttribute('src', url)
+  //     });
+  //     img.removeAttribute("hidden");
+  //     img.setAttribute("src", url);
   //     console.log(url);
   //   }
-  // })
+  // });
 }
