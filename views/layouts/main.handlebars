@@ -13,10 +13,21 @@
 
 <body>
 <div class="flex-column justify-space-around">
-<nav>
-<button class="no-button" id="logout">logout</button>
-
-</nav>          
+ <header class="display-flex justify-space-between align-center p-2">
+      <h1>
+       
+      </h1>
+      <nav>
+        <!-- Conditionally render login or logout links -->
+        {{#if loggedIn}}
+        <a class="login-font" href="/login">login</a>
+        {{else}}
+        <a class="login-font" href="/profile">profile</a> |
+        <a class="login-font" href="/home">home</a> |
+        <button class="no-button" id="logout">logout</button>
+        {{/if}}
+      </nav>
+    </header>
     <main class="container container-fluid">
         {{{body}}}
     </main>

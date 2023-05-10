@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { Stamp, User, Photo } = require("../../models");
+const { Stamp, User, Photo, Place } = require("../../models");
 
 router.post("/", async (req, res) => {
   if (!req.session.logged_in) {
@@ -9,15 +9,38 @@ router.post("/", async (req, res) => {
   try {
     const newStamp = await Stamp.create({
       ...req.body,
+      ...req.body,
       //add image url here?
       UserId: req.session.user_id,
+      UserId: req.session.user_id,
     });
+
 
     res.status(200).json(newStamp);
   } catch (err) {
     res.status(400).json(err);
   }
 });
+
+router.get("/", async (req, res) => {
+  try {
+    const dbStampData = await Stamp.findAll({
+      where: { UserId: req.session.user_id },
+      include: [
+        { model: User, attributes: ["first_name", "last_name", "profile_pic"] },
+      ],
+    });
+
+    const stamps = dbStampData.map((stamp) => stamp.get({ plain: true }));
+
+    res.render("profile", { stamps, loggedIn: true });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+
 
 router.delete("/:id", async (req, res) => {
   if (!req.session.logged_in) {
@@ -47,6 +70,8 @@ router.get("/", (req, res) => {
   Stamp.findAll({
     include: [User],
     include: [Photo],
+    include: [User],
+    include: [Photo],
   })
     .then((stamps) => {
       res.json(stamps);
@@ -55,6 +80,21 @@ router.get("/", (req, res) => {
       console.log(err);
       res.status(500).json({ msg: "error occurred", err });
     });
+});
+
+router.get("/:id", async (req, res) => {
+  try {
+    const dbStampData = await Stamp.findByPk(req.params.id, {
+      include: [Place],
+      include: [Photo],
+    });
+
+    const stamp = dbStampData.get({ plain: true });
+    res.render("profile", { stamp, loggedIn: req.session.loggedIn });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
 });
 
 module.exports = router;
