@@ -1,6 +1,12 @@
 header, .project:not(:last-child) {
     /* border-bottom: 1px solid #ccc; */
   }
+
+  .my-prof{
+    width: 100%;
+  height: 200px;
+  object-fit: cover;
+  }
   
   .no-button {
     background: none;
