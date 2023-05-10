@@ -116,6 +116,9 @@ uploadPhotoBtn.addEventListener("click", function () {
   myWidget.open();
 });
 
+
+
+
 // Event listener for form submission
 <<<<<<< HEAD
 document
