@@ -17,6 +17,11 @@ Stamp.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
+    likes:{
+      type:DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0
+    },
     photo_url: {
       type: DataTypes.STRING,
       allowNull: true,

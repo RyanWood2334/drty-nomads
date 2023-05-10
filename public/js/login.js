@@ -51,7 +51,7 @@ const signupFormHandler = async (event) => {
         last_name,
         username,
         password,
-        profile_pic,
+        // profile_pic,
         user_age,
         user_home,
         about_me,

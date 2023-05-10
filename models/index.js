@@ -10,21 +10,24 @@ User.hasMany(Stamp, {
 Stamp.belongsTo(User, {
   onDelete: "CASCADE",
 });
+
 Stamp.hasMany(User);
 
 User.belongsTo(Stamp, {
   onDelete: "CASCADE",
 });
 
-Stamp.hasMany(Photo, {
-  onDelete: "CASCADE",
-});
+//  Stamp.hasMany(Photo, {
+//    onDelete: "CASCADE",
+//  });
 
-Photo.belongsTo(Stamp, {
+//  Photo.belongsTo(Stamp, {
+//    onDelete: "SET NULL",
+//  });
+
+Stamp.belongsTo(Place, {
   onDelete: "SET NULL",
 });
-
-Stamp.belongsTo(Place);
 
 module.exports = {
   User: User,
