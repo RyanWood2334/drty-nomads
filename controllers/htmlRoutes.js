@@ -196,17 +196,20 @@ router.get("/stamps/:id", withAuth, async (req, res) => {
 
 router.get('/home', async (req, res) => {
   try {
-    const user = await User.findAll({
+    const userData = await User.findAll({
       include: [Stamp],
     });
-    logged = true;
+    const users = userData.map(user => user.get({ plain: true }));
+console.log(users);
+    const logged = true;
 
-    res.render('homepage', { user, logged, loggedIn: req.session.loggedIn });
+    res.render('homepage', { users, logged, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
+
 
 
 
