@@ -10,6 +10,11 @@ User.hasMany(Stamp, {
 Stamp.belongsTo(User, {
   onDelete: "CASCADE",
 });
+Stamp.hasMany(User);
+
+User.belongsTo(Stamp, {
+  onDelete: "CASCADE",
+});
 
 Stamp.belongsTo(Place, {
   onDelete: "CASCADE",

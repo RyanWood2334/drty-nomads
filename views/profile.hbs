@@ -15,6 +15,11 @@
 </div>
 
 
+
+
+
+
+
 <!-- Add a button to show/hide the form -->
 
 <img src="https://i.ibb.co/1QTM68S/my-dashboard-html-1.png"  id="new-stamp-btn"></img>
@@ -40,6 +45,47 @@
   </form>
 </div>
 
+{{!-- <div class="card mb-3" id="drty-card">
+  <div class="row no-gutters">
+    <div class="col-md-2">
+      <img src={{photos}} class="card-img" alt="avatar">
+    </div>
+    <div class="col-md-3">
+      <div class="card-body">
+        <p class="card-title">Name: {{destinationName}}</p>
+        <p class="card-text">Country: {{destinationNotes}}</p>
+        <p class="card-text">About me: {{photos}}</p>
+      </div>
+      <div class="col-md-7"></div>
+    </div>
+  </div>
+</div> --}}
+
+
+
+
+{{#if stamp.length}}
+<div class="row mt-4">
+  <div class="col-md-12">
+    <h3>Digital Passport stamps:</h3>
+
+    {{#each stamps as |stamp|}}
+    <div class="row mb-2">
+      <div class="col-md-4" id="stamps">
+        <h4><a href="/project/{{stamp.photos}}">{{stamp.destinationName}}</a><p>{{stamp.destinationNotes}}</p></h4>
+      <div class="col-md-8" id="movement">
+        <button class="btn btn-sm btn-danger button-72" data-id="{{stamp.id}}">DELETE</button>
+
+      </div>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</div>
+{{/if}}
+
+
+{{!-- 
 {{#if projects.length}}
 <div class="row mt-4">
   <div class="col-md-12">
@@ -59,7 +105,7 @@
   </div>
 </div>
 {{/if}}
-
+ --}}
 
 
 <script src="./js/profile.js"></script>

@@ -8,18 +8,16 @@ router.post("/", async (req, res) => {
   }
   try {
     const newStamp = await Stamp.create({
-      destination_name: req.body.destination_name,
-      destination_notes: req.body.destination_notes,
+      ...req.body,
       //add image url here?
-      user_id: req.session.user_id,
+      UserId: req.session.user_id,
     });
-// render(profile)
+
     res.status(200).json(newStamp);
   } catch (err) {
     res.status(400).json(err);
   }
 });
-
 
 router.delete("/:id", async (req, res) => {
   if (!req.session.logged_in) {
@@ -46,9 +44,9 @@ router.delete("/:id", async (req, res) => {
 
 //test route for looking at seeds (we can comment out at any  time)
 router.get("/", (req, res) => {
-  
   Stamp.findAll({
-   
+    include: [User],
+    include: [Photo],
   })
     .then((stamps) => {
       res.json(stamps);
