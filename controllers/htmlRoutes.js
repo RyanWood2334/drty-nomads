@@ -8,6 +8,7 @@ router.get("/", async (req, res) => {
     res.render("logohome", {
       // projects,
       logged_in: req.session.logged_in,
+      account_deleted: req.query.account_deleted,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -248,6 +249,15 @@ router.get("/home", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+router.post("/delete-account", withAuth, async (req, res) => {
+  await User.destroy({
+    where: {
+      id: req.session.user_id,
+    }
+  })
+  res.redirect("/?account_deleted=true");
+})
 
 // router.get("/profile/stamps", async (req, res) => {
 //   try {

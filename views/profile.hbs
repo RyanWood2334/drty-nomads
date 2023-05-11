@@ -11,8 +11,10 @@
         <p class="card-text">Country: {{user.user_home}}</p>
         <p class="card-text">About me: {{user.about_me}}</p>
       </div>
-      <div class="col-md-7"></div>
     </div>
+  <div class="col-md-7 flex-column align-content-end justify-flex-end">
+      <button class="btn btn-danger mb-2" style="margin-right: .5em;" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete Account</button>
+  </div>
   </div>
 </div>
 
@@ -299,6 +301,25 @@
     </div>
   </div>
   {{/each}}
+</div>
+
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark text-light">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete Account</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form class="delete-form" action="/delete-account" method="post">
+                <div class="modal-body m-2">
+                    Are you sure you want to delete your account?
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 
 <img src="https://i.ibb.co/1QTM68S/my-dashboard-html-1.png"  id="new-stamp-btn" style="padding-bottom: 20px;"></img>
