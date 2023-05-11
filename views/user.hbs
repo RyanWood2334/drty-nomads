@@ -1,15 +1,16 @@
 
 
 <div class="card mb-3" id="drty-card">
-  <div class="row no-gutters">
-    <div class="col-md-2">
-      <img src={{user.profile_pic}} class="card-img my-prof" alt="avatar" style="width: 200px;">
+  <div class="row no-gutters" id="drty-card-header">
+    <div class="col-md-2" >
+      <img src={{user.profile_pic}} class="card-img my-prof" alt="avatar" style="width: 200px; height: 400px;">
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3" id="drty-card-header-textbox" >
       <div class="card-body">
         <h1 class="card-title"> {{user.first_name}} {{user.last_name}}</h1>
         <h4 class="card-text"> {{user.user_home}}</h4>
-        <p class="card-text">About me: {{user.about_me}}</p>
+        <h7 class="card-text"> Age:{{user.user_age}}</h7>
+        <p class="card-text" style="color:moccasin;">About me: {{user.about_me}}</p>
       </div>
       <div class="col-md-7"></div>
     </div>
@@ -21,8 +22,8 @@
 <div class="row">
   {{#each stamps}}
   <div class="col-md-4">
-    <div class="card" style="width: 18rem;">
-      <a href="/stamps/{{this.id}}">
+    <div class="card" style="width: 18rem;" id="user-drty-card-stamp">
+      <a  href="/stamps/{{this.id}}" style="color: black;  "id="user-drty-stamp-link">
       <img class="card-img-top" src={{this.photo_url}} alt="Card image cap">
       <div class="card-body">
         
