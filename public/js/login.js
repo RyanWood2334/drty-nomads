@@ -1,3 +1,12 @@
+const aboutMeInput = document.querySelector("#about_me-signup");
+
+aboutMeInput.addEventListener("input", () => {
+  const maxLength = 80;
+  if (aboutMeInput.value.length > maxLength) {
+    aboutMeInput.value = aboutMeInput.value.slice(0, maxLength);
+  }
+});
+
 const loginFormHandler = async (event) => {
   event.preventDefault();
 

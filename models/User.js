@@ -54,6 +54,9 @@ User.init(
     about_me: {
       type: DataTypes.TEXT,
       allowNull: true,
+      validate: {
+        len: [80],
+      },
     },
   },
   {

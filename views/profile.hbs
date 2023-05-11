@@ -7,13 +7,13 @@
     </div>
     <div class="col-md-3">
       <div class="card-body">
-        <p class="card-title">Name: {{user.first_name}} {{user.last_name}}</p>
-        <p class="card-text">Country: {{user.user_home}}</p>
+        <h1 class="card-title"> {{user.first_name}} {{user.last_name}}</h1>
+        <h4 class="card-text"> {{user.user_home}}</h4>
         <p class="card-text">About me: {{user.about_me}}</p>
       </div>
     </div>
   <div class="col-md-7 flex-column align-content-end justify-flex-end">
-      <button class="btn btn-danger mb-2" style="margin-right: .5em;" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete Account</button>
+      <button class="btn btn-danger mb-2 button-72" style="margin-right: .5em;" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete Account</button>
   </div>
   </div>
 </div>
@@ -293,16 +293,49 @@
     <div class="card" style="width: 18rem;">
       <img class="card-img-top" src="{{stamps.photo_url}}" alt="Card image cap">
       <div class="card-body">
+        <div style="display: flex; justify-content: center;">
         <h5 class="card-title"><a href="/stamps/{{stamps.id}}">{{stamps.destination_name}}</a></h5>
+
+        </div>
         <p class="card-text">{{stamps.destination_notes}}</p>
-        <button class="btn btn-sm btn-danger button-72" data-id="{{stamps.id}}">DELETE</button>
-         <button type="submit" id="updateBtn" class="btn btn-primary button-72">Update</button>
+       <div style="display: flex; justify-content: center;"><div style="padding-right: 5px;">
+  <button class="btn btn-sm btn-danger button-72" data-id={{stamps.id}}>Delete</button></div>
+  <div>
+  <button type="button" class="btn btn-sm btn-danger button-72" data-bs-toggle="modal" data-bs-target="#updateModal" data-stamp-id={{stamps.id}}>
+   Update 
+  </button></div>
+</div>
+
+
       </div>
     </div>
   </div>
   {{/each}}
 </div>
 
+
+{{!-- modal --}}
+<div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark text-light">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateModalLabel">Update</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form class="update-form">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="notes-update" class="form-label">Update Notes</label>
+                        <input type="text" class="form-control" id="notes-update" placeholder="notes">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger" id="updateBtn" data-bs-target="#deleteModal" >Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -332,3 +365,5 @@
 <script async
         src="https://maps.googleapis.com/maps/api/js?key={{ mapsApiKey }}&libraries=places&callback=initMap">
 </script>
+
+<script src="./js/update.js"></script>

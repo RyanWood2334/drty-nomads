@@ -289,4 +289,24 @@ router.get("/home", async (req, res) => {
 //   }
 // });
 
+router.put("/stamps/:id", async (req, res) => {
+  if (!req.session.logged_in) {
+    return res.status(403).json({ msg: "Login!" });
+  }
+  try {
+    // const { notes } = req.body.destination_notes;
+    const updatedStamp = await Stamp.update(
+      { destination_notes:req.body.notes },
+      { where: { id: req.params.id } }
+    );
+    if (!updatedStamp) {
+      return res.status(404).json({ msg: "Stamp not found" });
+    }
+    return res.status(200).json(updatedStamp);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ msg: "Server error" });
+  }
+});
+
 module.exports = router;
