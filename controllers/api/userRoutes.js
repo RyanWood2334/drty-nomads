@@ -104,4 +104,27 @@ router.get("/", (req, res) => {
     });
 });
 
+router.delete("/:id", async (req, res) => {
+  if (!req.session.logged_in) {
+    return res.status(403).json({ msg: "Login before deleting a User!" });
+  }
+  try {
+    const projectData = await User.destroy({
+      where: {
+        id: req.params.id,
+        UserId: req.session.user_id,
+      },
+    });
+
+    if (!projectData) {
+      res.status(404).json({ message: "No user found with this id!" });
+      return;
+    }
+
+    res.status(200).json(projectData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
