@@ -250,15 +250,6 @@ router.get("/home", async (req, res) => {
   }
 });
 
-router.post("/delete-account", withAuth, async (req, res) => {
-  await User.destroy({
-    where: {
-      id: req.session.user_id,
-    }
-  })
-  res.redirect("/?account_deleted=true");
-})
-
 // router.get("/profile/stamps", async (req, res) => {
 //   try {
 //     const dbUserData = await Stamp.findAll({

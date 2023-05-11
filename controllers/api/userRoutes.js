@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { User } = require("../../models");
+const withAuth = require("../../utils/auth");
 
 // Base route is: /api/user
 router.post("/", async (req, res) => {
@@ -103,5 +104,14 @@ router.get("/", (req, res) => {
       res.status(500).json({ msg: "error occurred", err });
     });
 });
+
+router.post("/delete-account", withAuth, async (req, res) => {
+  await User.destroy({
+    where: {
+      id: req.session.user_id,
+    }
+  })
+  res.redirect("/?account_deleted=true");
+})
 
 module.exports = router;
