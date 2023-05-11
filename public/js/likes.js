@@ -19,5 +19,5 @@ const likeBtns = document.getElementsByClassName("stamp-like-btn");
 
 for (let i=0; i<likeBtns.length; i++) {
     console.log(likeBtns[i]);
-    likeBtns[i].addEventListener("click", likeStamp);
+    likeBtns[i++].addEventListener("click", likeStamp);
 }
