@@ -93,15 +93,18 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-router.put("/:id", (req, res) => {
-  Stamp.update({destination_name: req.body.destination_name, destination_notes:req.body.destination_notes},
-    {where: {id: req.params.id}}).then(data=>{
-    res.json(data);
-  }).catch(err=>{
-    console.log(err);
-    res.status(500).json({msg:"invalid syntax hence ,error occurred",err})
-  })
-})
+// router.put("/:id", (req, res) => {
+//   Stamp.update({destination_name: req.body.destination_name, destination_notes:req.body.destination_notes},
+//     {where: {id: req.params.id}}).then(data=>{
+//     res.json(data);
+//   }).catch(err=>{
+//     console.log(err);
+//     res.status(500).json({msg:"invalid syntax hence ,error occurred",err})
+//   })
+// })
+
+
+
 
 //test route for looking at seeds (we can comment out at any  time)
 // router.get("/", (req, res) => {

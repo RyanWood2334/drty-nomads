@@ -295,14 +295,43 @@
       <div class="card-body">
         <h5 class="card-title"><a href="/stamps/{{stamps.id}}">{{stamps.destination_name}}</a></h5>
         <p class="card-text">{{stamps.destination_notes}}</p>
-        <button class="btn btn-sm btn-danger button-72" data-id="{{stamps.id}}">DELETE</button>
-         <button type="submit" id="updateBtn" class="btn btn-primary button-72">Update</button>
+       <div style="display: flex; justify-content: center;">
+  <button class="btn btn-sm btn-danger button-72" data-id={{stamps.id}}>Delete</button>
+  <button type="button" class="btn btn-sm btn-danger button-72" data-bs-toggle="modal" data-bs-target="#updateModal" data-stamp-id={{stamps.id}}>
+   Update 
+  </button>
+</div>
+
+
       </div>
     </div>
   </div>
   {{/each}}
 </div>
 
+
+{{!-- modal --}}
+<div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark text-light">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateModalLabel">Update</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form class="update-form">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="notes-update" class="form-label">Update Notes</label>
+                        <input type="text" class="form-control" id="notes-update" placeholder="notes">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger" id="updateBtn" data-bs-target="#deleteModal" >Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -332,3 +361,5 @@
 <script async
         src="https://maps.googleapis.com/maps/api/js?key={{ mapsApiKey }}&libraries=places&callback=initMap">
 </script>
+
+<script src="./js/update.js"></script>
