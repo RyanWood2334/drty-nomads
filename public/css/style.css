@@ -68,13 +68,15 @@ header, .project:not(:last-child) {
     transform: scale(1.09);
   }
   
-  #new-back-btn {
+  #new-back-btn, .card-img-top {
     display: inline-block;
     width: 150px;
     height: 150px;
+    object-fit: cover;
+
   }
   
-  #new-back-btn img {
+  #new-back-btn img  {
     width: 100%;
     height: auto;
   }

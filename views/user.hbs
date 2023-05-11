@@ -7,8 +7,8 @@
     </div>
     <div class="col-md-3">
       <div class="card-body">
-        <p class="card-title">Name: {{user.first_name}} {{user.last_name}}</p>
-        <p class="card-text">Country: {{user.user_home}}</p>
+        <h1 class="card-title"> {{user.first_name}} {{user.last_name}}</h1>
+        <h4 class="card-text"> {{user.user_home}}</h4>
         <p class="card-text">About me: {{user.about_me}}</p>
       </div>
       <div class="col-md-7"></div>
@@ -22,12 +22,16 @@
   {{#each stamps}}
   <div class="col-md-4">
     <div class="card" style="width: 18rem;">
-      <img class="card-img-top" id="user-pic" src={{this.photo_url}} alt="Card image cap">
+      <img class="card-img-top" src={{this.photo_url}} alt="Card image cap">
       <div class="card-body">
         
-        <h5 class="card-title"><a href="/stamps/{{this.id}}">{{this.destination_name}}</a></h5>
+        <div style="display: flex; justify-content: center;">
+<h5 class="card-title"><a href="/stamps/{{this.id}}">{{this.destination_name}}</a></h5></div>
         <p class="card-text">{{this.destination_notes}}</p>
+        <div style="display: flex; justify-content: center;">
+
         <button class="btn btn-sm btn-danger stamp-like-btn" data-id="{{this.id}}" >LIKE</button> 
+       </div>
       </div>
     </div>
   </div>
