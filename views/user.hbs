@@ -22,15 +22,16 @@
   {{#each stamps}}
   <div class="col-md-4">
     <div class="card" style="width: 18rem;">
+      <a href="/stamps/{{this.id}}">
       <img class="card-img-top" src={{this.photo_url}} alt="Card image cap">
       <div class="card-body">
         
         <div style="display: flex; justify-content: center;">
-<h5 class="card-title"><a href="/stamps/{{this.id}}">{{this.destination_name}}</a></h5></div>
+<h5 class="card-title">{{this.destination_name}}</h5></div></a>
         <p class="card-text">{{this.destination_notes}}</p>
         <div style="display: flex; justify-content: center;">
 
-        <button class="btn btn-sm btn-danger stamp-like-btn" data-id="{{this.id}}" >LIKE</button> 
+        <a href="/users/{{this.UserId}}"><button class="btn btn-sm btn-danger stamp-like-btn" data-id="{{this.id}}" > {{this.likes}}❤️'s</button> </a>
        </div>
       </div>
     </div>
