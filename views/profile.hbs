@@ -13,10 +13,10 @@
         <p class="card-text" style="color:black;">About me: {{user.about_me}}</p>
       </div>
     </div>
-    <div class="col-md-12 d-flex flex-column align-items-end justify-content-end">
+    {{!-- <div class="col-md-12 d-flex flex-column align-items-end justify-content-end">
       <button class="btn btn-danger mb-2 button-72" style="margin-right: .5em;" data-bs-toggle="modal"
         data-bs-target="#deleteModal" id="delete">Delete Account</button>
-    </div>
+    </div> --}}
 
   </div>
 </div>
@@ -63,16 +63,6 @@
 
 </div>
 
-<div class="row mt-3">
-
-    {{#each stamp as |stamps|}}
-        <div class="col-md-4">
-            <div class="card" style="width: 18rem;" id="user-drty-card-stamp">
-                <img class="card-img-top" src="{{stamps.photo_url}}" alt="Card image cap">
-                <div class="card-body">
-                    <div style="display: flex; justify-content: center;">
-                        <h5 class="card-title"><a href="/stamps/{{stamps.id}}" style="color: rgb(6, 3, 22);"
-                                                  id="user-drty-stamp-link">{{stamps.destination_name}}</a></h5>
 
 
 <div class="row align-items-stretch justify-content-between" id="make">
