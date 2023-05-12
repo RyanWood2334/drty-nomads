@@ -13,9 +13,6 @@
         <p class="card-text" style="color:black;">About me: {{user.about_me}}</p>
       </div>
     </div>
-  <div class="col-md-7 flex-column align-content-end justify-flex-end">
-      <button class="btn btn-danger mb-2 button-72" style="margin-right: .5em;" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete Account</button>
-  </div>
   </div>
 </div>
 
@@ -274,13 +271,13 @@
 		};
 	</script>
     </div>
-        <div class="form-group d-flex justify-content-center">
-      <button type="click" class="btn btn-primary button-72 form-input" id="add-photo-btn" >Upload Photos from your destination!</button>
+        <div class="form-group d-flex">
+      <button type="click" class="btn btn-primary button-72" id="add-photo-btn" >Upload Photos from your destination!</button>
     </div>
    
     <div class="form-group">
-      <label for="project-desc" style="color:rgb(73, 73, 73)">Tell us about your trip!:</label>
-      <textarea class="form-input" id="project-desc" name="project-desc"></textarea>
+      <label for="project-desc" style="color:rgb(73, 73, 73)">Share your memories</label>
+      <textarea class="form-input" id="project-desc" name="project-desc" placeholder="Tell us about your trip..."></textarea>
     </div>
     <div class="form-group">
       <button type="submit" class="btn btn-primary button-72">Create Stamp</button>
@@ -336,25 +333,6 @@
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-danger" id="updateBtn" data-bs-target="#deleteModal" >Update</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content bg-dark text-light">
-            <div class="modal-header">
-                <h5 class="modal-title">Delete Account</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form class="delete-form" action="/api/users/delete-account" method="post">
-                <div class="modal-body m-2">
-                    Are you sure you want to delete your account?
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-danger">Delete</button>
                 </div>
             </form>
         </div>

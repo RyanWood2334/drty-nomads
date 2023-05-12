@@ -137,4 +137,22 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
+router.put('/', withAuth, async (req, res) => {
+  const userId = req.session.user_id;
+  const update = await User.update({
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
+    user_name: req.body.user_name,
+    user_age: req.body.user_age,
+    user_home: req.body.user_home,
+    about_me: req.body.about_me,
+  }, {
+    where: {
+      id: userId,
+    }
+  });
+  console.log('updated rows:', update[0])
+  res.status(200).json({});
+});
+
 module.exports = router;
