@@ -1,15 +1,16 @@
 
 
 <div class="card mb-3" id="drty-card">
-  <div class="row no-gutters">
+  <div class="row no-gutters" id="drty-card-header">
     <div class="col-md-2">
-      <img src={{user.profile_pic}} class="card-img my-prof" alt="avatar" style="width: 200px;">
+      <img src={{user.profile_pic}} class="card-img my-prof" alt="avatar" style="width: 100%; height: 100%;">
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3" id="drty-card-header-textbox">
       <div class="card-body">
         <h1 class="card-title"> {{user.first_name}} {{user.last_name}}</h1>
         <h4 class="card-text"> {{user.user_home}}</h4>
-        <p class="card-text">About me: {{user.about_me}}</p>
+        <h7 class="card-text"> Age:{{user.user_age}}</h7>
+        <p class="card-text" style="color:black;">About me: {{user.about_me}}</p>
       </div>
     </div>
   <div class="col-md-7 flex-column align-content-end justify-flex-end">
@@ -32,8 +33,9 @@
 <div id="new-stamp-form-container" style="display: none;" >
   <form class="form new-project-form">
       <img src="" hidden="hidden" id="ac-img">
-    <div class="form-group">
-      <label for="project-name">Destination:</label>
+            <label for="project-name">Destination:</label>
+    <div class="form-group d-flex justify-content">
+      {{!-- <label for="project-name">Destination:</label> --}}
       <input class="typeahead form-control form-input" type="text" id="project-name" name="project-name" placeholder="What magical place did you go?"/>
       <script>
 		// Define the data array
@@ -270,7 +272,7 @@
 		};
 	</script>
     </div>
-    <div class="form-group">
+        <div class="form-group d-flex justify-content-center">
       <button type="click" class="btn btn-primary button-72 form-input" id="add-photo-btn" >Upload Photos from your destination!</button>
     </div>
    
@@ -290,11 +292,11 @@
 <div class="row">
   {{#each stamp as |stamps|}}
   <div class="col-md-4">
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 18rem;" id="user-drty-card-stamp">
       <img class="card-img-top" src="{{stamps.photo_url}}" alt="Card image cap">
       <div class="card-body">
-        <div style="display: flex; justify-content: center;">
-        <h5 class="card-title"><a href="/stamps/{{stamps.id}}">{{stamps.destination_name}}</a></h5>
+        <div style="display: flex; justify-content: center;" >
+        <h5 class="card-title"><a href="/stamps/{{stamps.id}}" style="color: rgb(6, 3, 22);" id="user-drty-stamp-link" >{{stamps.destination_name}}</a></h5>
 
         </div>
         <p class="card-text">{{stamps.destination_notes}}</p>
