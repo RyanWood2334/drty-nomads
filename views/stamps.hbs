@@ -1,8 +1,7 @@
-
 <div class="card mb-3" id="drty-card-stamp">
-    <div class="col-md text-center " id="drty-card-photo">
-      <img src={{stamp.photo_url}} id="singleton" class="card-img" alt="avatar" />
-    </div>
+  <div class="col-md text-center " id="drty-card-photo">
+    <img src={{stamp.photo_url}} id="singleton" class="card-img" alt="avatar" />
+  </div>
   <div class="text-center" id="drty-card-textbox">
 
     <h2 style="color: black;">Photo by:
@@ -11,24 +10,26 @@
     </h2>
     <p>Capturing {{stamp.destination_name}}</p>
     <p>Summary: {{stamp.destination_notes}} </p>
-    <a id="backarrow" style="text-decoration: none; color:black; border: 1px solid black; padding:8px"  href="/users/{{user.id}}"> Go Back
-    <img style="width:5%;" src="/images/backarrow.png" alt="back arrow">
-  </a>
-    <p style="font-family: Arial, Helvetica, sans-serif !important; font-size:xx-large "><img style="width:10%; font-family: Arial, Helvetica, sans-serif !important;"  src="/images/likes.png" alt="like" />: {{stamp.likes}}</p>
+    <a id="backarrow" style="text-decoration: none; color:black; border: 1px solid black; padding:8px"
+      href="/users/{{user.id}}"> Go Back
+      <img style="width:5%;" src="/images/backarrow.png" alt="back arrow">
+    </a>
+    <p style="font-family: Arial, Helvetica, sans-serif !important; font-size:xx-large "><img
+        style="width:10%; font-family: Arial, Helvetica, sans-serif !important;" src="/images/likes.png" alt="like" />:
+      {{stamp.likes}}</p>
     <p>
     </p>
   </div>
 </div>
 
- 
+
 
 
 <div class="container">
   <div class="row">
     <div class="col-md text-center">
-       
+
       <a id="new-back-btn" href="/home"><img src="/images/backbutton.png" alt="back button"></a>
     </div>
   </div>
 </div>
-

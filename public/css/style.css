@@ -158,6 +158,8 @@ header, .project:not(:last-child) {
 
   #fix{
     padding-bottom: 15px !important;
+    padding-top: 15px !important;
+    text-decoration: none;
   }
 
   #user-drty-card-stamp {
