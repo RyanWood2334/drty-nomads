@@ -2,6 +2,15 @@ header, .project:not(:last-child) {
     /* border-bottom: 1px solid #ccc; */
   }
 
+.nav-item a {
+  text-decoration: none !important;
+  color:#fa6610 !important;
+}
+.nav-item a:hover {
+  text-decoration: underline !important;
+}
+
+
   .my-prof{
     width: 100%;
   height: 200px;
@@ -62,7 +71,6 @@ header, .project:not(:last-child) {
     color: #391d47;
     text-decoration: underline;
   }
-  
 
   .logo-container {
     position: relative;
@@ -122,6 +130,9 @@ header, .project:not(:last-child) {
   .fit-image {
     width: 100%;
     height: auto;
+  }
+  .settings-section {
+    font-family: 'IM Fell English SC', serif;
   }
   
   #drty-card-stamp {
@@ -187,8 +198,13 @@ header, .project:not(:last-child) {
      /* border-left: 1px solid black; */
       }
 
+#user-drty-stamp-link {
+  text-decoration: none;
+}
+
   #user-drty-stamp-link:hover {
     color: #8d00cf;
+    text-decoration: underline;
   }
 
 #menu-btns {
@@ -219,7 +235,6 @@ header, .project:not(:last-child) {
     background-color: initial;
     background-image: linear-gradient(rgba(179, 132, 201, .84), rgba(57, 31, 91, .84) 50%);
     border-radius: 42px;
-    border-width: 0;
     box-shadow: rgba(57, 31, 91, 0.24) 0 2px 2px,rgba(179, 132, 201, 0.4) 0 8px 12px;
     color: #FFFFFF;
     cursor: pointer;
@@ -260,7 +275,7 @@ header, .project:not(:last-child) {
 /* ----------- */
  
 html {
-  overflow-y: scroll;
+  overflow-y: auto;
   *overflow-x: hidden;
 }
  

@@ -15,6 +15,14 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get('/settings',  withAuth, async (req, res) => {
+  const user = await User.findByPk(req.session.user_id)
+  res.render('settings', {
+    logged: true,
+    user: user,
+  })
+})
+
 router.get("/", async (req, res) => {
   try {
     const userData = await User.findAll({
