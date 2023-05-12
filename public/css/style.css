@@ -160,6 +160,8 @@ header, .project:not(:last-child) {
     padding-bottom: 15px !important;
     padding-top: 15px !important;
     text-decoration: none;
+    /* flex: 1 0; */
+
   }
 
   #user-drty-card-stamp {
@@ -211,13 +213,14 @@ header, .project:not(:last-child) {
 
 #menu-btns {
   background-color: white;
-  color: purple;
+  color: orangered;
   border-radius: 10px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: x-large;
   padding: 15px;
   opacity: 90%;
   font-style: none !important;
+  text-decoration: underline;
 }
 
   .login-font {
