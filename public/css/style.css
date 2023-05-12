@@ -205,17 +205,6 @@ header, .project:not(:last-child) {
     text-decoration: underline;
   }
 
-/*#menu-btns {*/
-/*  background-color: white;*/
-/*  color: orangered;*/
-/*  border-radius: 10px;*/
-/*  font-family: Arial, Helvetica, sans-serif;*/
-/*  font-size: x-large;*/
-/*  padding: 15px;*/
-/*  opacity: 90%;*/
-/*  text-decoration: underline;*/
-/*}*/
-
   .login-font {
     font-weight: bold;
     color: aliceblue;
