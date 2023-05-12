@@ -18,10 +18,10 @@
 </div>
 
 
-
-<div class="row">
+<div class="container">
+<div class="row align-items-start justify-content-center">
   {{#each stamps}}
-  <div class="col-md-4">
+  <div class="col">
     <div class="card" style="width: 18rem;" id="user-drty-card-stamp">
       <a  href="/stamps/{{this.id}}" style="color: black;  "id="user-drty-stamp-link">
       <img class="card-img-top" src={{this.photo_url}} alt="Card image cap">
@@ -38,6 +38,7 @@
     </div>
   </div>
   {{/each}}
+</div>
 </div>
 
 

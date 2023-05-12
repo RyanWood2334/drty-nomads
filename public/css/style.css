@@ -59,10 +59,15 @@ header, .project:not(:last-child) {
   }
   
   #new-stamp-btn {
-    width: 10%;
+    width: 130px;
+    height: 150px;
+    object-fit: contain;
     align-items: start;
     box-shadow: none;
     transition: all 0.3s ease-in-out;
+    /* position: absolute; */
+    top: 450px;
+    left: 10px;
   }
   
   #new-stamp-btn:hover {
@@ -123,8 +128,8 @@ header, .project:not(:last-child) {
     background-color: white;
      /* background-image: url(../images/vintage-grunge-paper-background_720.jpg);  */
      opacity: 80%;
-     margin-left: 20%;
-      margin-right: 20%;
+     /* margin-left: 20%; */
+      /* margin-right: 20%; */
       border-radius: 25px;
       font-family: 'IM Fell English SC', serif;
     transition: all 0.3s ease-in-out;
@@ -132,14 +137,16 @@ header, .project:not(:last-child) {
 
   #user-drty-card-stamp:hover {
     transform: scale(1.09);
+    
   }
 
   
   #drty-card-header {
     background-image: url(../images/passport-paper-unsplash.jpg);
-    background-size: 1400px;
+    background-size: 1450px;
     border-radius: 15px;
     color: black;
+    opacity: 90%;
   }
 
   #drty-card-header-textbox {

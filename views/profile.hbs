@@ -2,8 +2,8 @@
 
 <div class="card mb-3" id="drty-card">
   <div class="row no-gutters" id="drty-card-header">
-    <div class="col-md-2">
-      <img src={{user.profile_pic}} class="card-img my-prof" alt="avatar" style="width: 100%; height: 100%;">
+    <div class="col-md-3">
+      <img src={{user.profile_pic}} class="card-img my-prof" alt="avatar" style="height:300px; object-fit:cover; width: 300px;">
     </div>
     <div class="col-md-3" id="drty-card-header-textbox">
       <div class="card-body">
@@ -21,6 +21,8 @@
 
 
 
+   <div><img src="https://i.ibb.co/1QTM68S/my-dashboard-html-1.png"  id="new-stamp-btn" style="padding-bottom: 20px;"></img>
+      </div>
 
 
 
@@ -33,10 +35,10 @@
 <div id="new-stamp-form-container" style="display: none;" >
   <form class="form new-project-form">
       <img src="" hidden="hidden" id="ac-img">
-            <label for="project-name">Destination:</label>
+            <label for="project-name" style="color:rgb(73, 73, 73)">Destination:</label>
     <div class="form-group d-flex justify-content">
       {{!-- <label for="project-name">Destination:</label> --}}
-      <input class="typeahead form-control form-input" type="text" id="project-name" name="project-name" placeholder="What magical place did you go?"/>
+      <input class="typeahead form-control form-input" type="text" id="project-name" name="project-name" placeholder="Where did you go?"/>
       <script>
 		// Define the data array
 		var places = [
@@ -277,7 +279,7 @@
     </div>
    
     <div class="form-group">
-      <label for="project-desc">Tell us about your trip!:</label>
+      <label for="project-desc" style="color:rgb(73, 73, 73)">Tell us about your trip!:</label>
       <textarea class="form-input" id="project-desc" name="project-desc"></textarea>
     </div>
     <div class="form-group">
@@ -290,6 +292,7 @@
 
 
 <div class="row">
+     
   {{#each stamp as |stamps|}}
   <div class="col-md-4">
     <div class="card" style="width: 18rem;" id="user-drty-card-stamp">
@@ -358,7 +361,7 @@
     </div>
 </div>
 
-<img src="https://i.ibb.co/1QTM68S/my-dashboard-html-1.png"  id="new-stamp-btn" style="padding-bottom: 20px;"></img>
+
 <script 
      src="https://widget.cloudinary.com/v2.0/global/all.js" 
      type="text/javascript">
