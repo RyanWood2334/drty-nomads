@@ -69,7 +69,7 @@ const signupFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      alert("user created");
+      alert("User created");
       document.location.replace("/profile");
       // document.location.replace('/stamps');
     } else {
@@ -120,7 +120,7 @@ const myWidget = cloudinary.createUploadWidget(
       console.log("Done! Here is the image info: ", result.info);
       profilePicUploadUrl = result.info.url;
       console.log("uploaded-pic-URL", profilePicUploadUrl);
-      window.alert("picture uploaded!");
+      window.alert("Picture uploaded!");
       document.getElementById("profile-pic-btn");
     }
   }

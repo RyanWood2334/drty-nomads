@@ -3,14 +3,14 @@
 <div class="card mb-3" id="drty-card">
   <div class="row no-gutters" id="drty-card-header">
     <div class="col-md-2">
-      <img src={{user.profile_pic}} class="card-img my-prof" alt="avatar" style="width: 200px; height: 300px;">
+      <img src={{user.profile_pic}} class="card-img my-prof" alt="avatar" style="width: 100%; height: 100%;">
     </div>
     <div class="col-md-3" id="drty-card-header-textbox">
       <div class="card-body">
         <h1 class="card-title"> {{user.first_name}} {{user.last_name}}</h1>
         <h4 class="card-text"> {{user.user_home}}</h4>
         <h7 class="card-text"> Age:{{user.user_age}}</h7>
-        <p class="card-text" style="color:moccasin;">About me: {{user.about_me}}</p>
+        <p class="card-text" style="color:black;">About me: {{user.about_me}}</p>
       </div>
     </div>
   <div class="col-md-7 flex-column align-content-end justify-flex-end">
@@ -33,8 +33,9 @@
 <div id="new-stamp-form-container" style="display: none;" >
   <form class="form new-project-form">
       <img src="" hidden="hidden" id="ac-img">
-    <div class="form-group">
-      <label for="project-name">Destination:</label>
+            <label for="project-name">Destination:</label>
+    <div class="form-group d-flex justify-content">
+      {{!-- <label for="project-name">Destination:</label> --}}
       <input class="typeahead form-control form-input" type="text" id="project-name" name="project-name" placeholder="What magical place did you go?"/>
       <script>
 		// Define the data array
@@ -271,7 +272,7 @@
 		};
 	</script>
     </div>
-    <div class="form-group">
+        <div class="form-group d-flex justify-content-center">
       <button type="click" class="btn btn-primary button-72 form-input" id="add-photo-btn" >Upload Photos from your destination!</button>
     </div>
    
