@@ -158,7 +158,7 @@ header, .project:not(:last-child) {
 
   }
 
-  #user-drty-card-stamp {
+  #user-drty-card-stamp #user-drty-card-futureTrip {
     color: black;
     background-color: white;
      /* background-image: url(../images/vintage-grunge-paper-background_720.jpg);  */
@@ -196,11 +196,11 @@ header, .project:not(:last-child) {
      /* border-left: 1px solid black; */
       }
 
-#user-drty-stamp-link {
+#user-drty-stamp-link #user-drty-futureTrip-link {
   text-decoration: none;
 }
 
-  #user-drty-stamp-link:hover {
+  #user-drty-stamp-link:hover #user-drty-futureTrip-link {
     color: #8d00cf;
     text-decoration: underline;
   }

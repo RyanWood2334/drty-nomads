@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User, Stamp, Place, Photo } = require("../models");
+const { User, Stamp, Place, Photo, FutureTrip } = require("../models");
 const withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
@@ -15,13 +15,13 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get('/settings',  withAuth, async (req, res) => {
-  const user = await User.findByPk(req.session.user_id)
-  res.render('settings', {
+router.get("/settings", withAuth, async (req, res) => {
+  const user = await User.findByPk(req.session.user_id);
+  res.render("settings", {
     logged: true,
     user: user,
-  })
-})
+  });
+});
 
 router.get("/", async (req, res) => {
   try {
@@ -40,6 +40,21 @@ router.get("/", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+// router.get("/profile", withAuth, async (req, res) => {
+//   try {
+//     const dbFutureTripData = await FutureTrip.findByPk(req.session.user_id);
+//     console.log(dbFutureTripData);
+//     res.render("profile", {
+//       future_destination_photo_url: dbFutureTripData.Photos,
+//       future_destination_name: dbFutureTripData.future_destination_name,
+//       whyGo_notes: dbFutureTripData.whyGo_notes,
+//     });
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+// });
 
 // router.get("/", async (req, res) => {
 //     try {
@@ -106,6 +121,7 @@ router.get("/profile", withAuth, async (req, res) => {
       include: [
         {
           model: Stamp,
+          // model: FutureTrip,
           // model: Place,
           // model: Photo,
         },
@@ -113,6 +129,10 @@ router.get("/profile", withAuth, async (req, res) => {
     });
 
     const user = dbUserData.get({ plain: true });
+    console.log(user);
+
+    const futureTrip = user.FutureTrips;
+    console.log(futureTrip);
 
     const stamp = user.Stamps;
 
@@ -122,9 +142,46 @@ router.get("/profile", withAuth, async (req, res) => {
     // add google maps api key
     res.render(`profile`, {
       user,
+      // futureTrip,
       stamp,
       logged,
-      loggedIn: req.session.loggedIn,
+      mapsApiKey: process.env.MAPS_API_KEY,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+router.get("/plannedtrips", withAuth, async (req, res) => {
+  try {
+    const dbUserData = await User.findByPk(req.session.user_id, {
+      include: [
+        {
+          // model: Stamp,
+          model: FutureTrip,
+          // model: Place,
+          // model: Photo,
+        },
+      ],
+    });
+
+    const user = dbUserData.get({ plain: true });
+    console.log(user);
+
+    const futureTrip = user.FutureTrips;
+    console.log(futureTrip);
+
+    const stamp = user.Stamps;
+
+    const logged = true;
+
+    console.log(stamp);
+    // add google maps api key
+    res.render(`plannedtrips`, {
+      user,
+      futureTrip,
+      // stamp,
+      logged,
       mapsApiKey: process.env.MAPS_API_KEY,
     });
   } catch (err) {
@@ -138,6 +195,21 @@ router.get("/profile", withAuth, async (req, res) => {
   try {
     const dbUserData = await User.findByPk(req.session.user_id);
     res.render("profile", {
+      firstName: dbUserData.first_name,
+      lastName: dbUserData.last_name,
+      country: dbUserData.user_home,
+      aboutMe: dbUserData.about_me,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get("/profile", withAuth, async (req, res) => {
+  try {
+    const dbUserData = await User.findByPk(req.session.user_id);
+    res.render("plannedtrips", {
       firstName: dbUserData.first_name,
       lastName: dbUserData.last_name,
       country: dbUserData.user_home,
@@ -304,7 +376,7 @@ router.put("/stamps/:id", async (req, res) => {
   try {
     // const { notes } = req.body.destination_notes;
     const updatedStamp = await Stamp.update(
-      { destination_notes:req.body.notes },
+      { destination_notes: req.body.notes },
       { where: { id: req.params.id } }
     );
     if (!updatedStamp) {
