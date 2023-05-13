@@ -81,22 +81,30 @@ header, .project:not(:last-child) {
   }
   
   #new-stamp-btn {
-    /* width: 130px;
-    height: 150px; */
     object-fit: contain;
-    padding-top: 14px;
     align-items: start;
     box-shadow: none;
     transition: all 0.3s ease-in-out;
-    /* position: absolute; */
-    /* top: 450px;
-    left: 10px; */
-    margin-bottom: 20px;
+    height: 150px;
+    width: auto;
   }
+
+#plannedtrips-page-btn {
+  object-fit: contain;
+  align-items: start;
+  box-shadow: none;
+  transition: all 0.3s ease-in-out;
+  height: 150px;
+  width: auto;
+}
   
   #new-stamp-btn:hover {
-    transform: scale(1.02);
+    transform: scale(1.08);
   }
+
+#plannedtrips-page-btn:hover {
+  transform: scale(1.08);
+}
   
   #new-back-btn, .card-img-top {
     display: inline-block;
