@@ -4,7 +4,6 @@
     <div class="col-md-3">
   <img src={{user.profile_pic}} class="card-img my-prof img-fluid" alt="avatar" style="height: 300px; object-fit: cover;">
 </div>
-
     <div class="col-md-3" id="drty-card-header-textbox">
       <div class="card-body">
         <h1 class="card-title"> {{user.first_name}} {{user.last_name}}</h1>
@@ -13,13 +12,41 @@
         <p class="card-text" style="color:black;">About me: {{user.about_me}}</p>
       </div>
     </div>
-    {{!-- <div class="col-md-12 d-flex flex-column align-items-end justify-content-end">
-      <button class="btn btn-danger mb-2 button-72" style="margin-right: .5em;" data-bs-toggle="modal"
-        data-bs-target="#deleteModal" id="delete">Delete Account</button>
-    </div> --}}
-
   </div>
 </div>
+
+<div class="container justify-content-center">
+    <div class="row">
+        <div id="profile-img" class="card p-3 col-sm-12">
+            <div class="container d-flex align-items-center" id="drty-card-header-textbox">
+                <div class="row">
+                    <div class="image text-center col-sm-3">
+                        <img src="{{user.profile_pic}}"
+                             class="rounded border border-light border-2" width="70%" alt="user avatar">
+                        <div class="mt-1">
+                            <span>@{{user.user_name}}</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-9 flex-column">
+                        <div class="bg-light bg-opacity-75 rounded" style="flex-grow: 1;">
+                            <h4 class="mb-0 mt-0">{{user.first_name}} {{user.last_name}}</h4>
+                            <div class="p-2 mt-2" style="flex-grow: 1;">
+                                <div>
+                                    <span>From: {{user.user_home}}</span>
+                                </div>
+                                <div>
+                                    <span>Age: {{user.user_age}}</span>
+                                </div>
+                                <div>
+                                    <span>About me: {{user.about_me}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 display-flex flex-row justify-center mt-3">
+                            <div>
+                                <img src="/images/stampShareTrip.png" alt="Share Trip" class="new-stamp-btn">
+
+<!---->
 
 
 
