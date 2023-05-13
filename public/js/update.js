@@ -43,3 +43,5 @@ const updateFormHandler = async (event) => {
 
 // Add an event listener to the update form submit button
 updateForm.addEventListener("submit", updateFormHandler);
+
+
