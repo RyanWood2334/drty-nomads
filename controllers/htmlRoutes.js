@@ -1,5 +1,12 @@
 const router = require("express").Router();
-const { User, Stamp, Place, Photo, FutureTrip } = require("../models");
+const {
+  User,
+  Stamp,
+  Place,
+  Photo,
+  FutureTrip,
+  LogoPhoto,
+} = require("../models");
 const withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
@@ -80,13 +87,28 @@ router.get("/", async (req, res) => {
 //     }
 //   });
 
-router.get("/login", (req, res) => {
-  if (req.session.logged_in) {
-    res.redirect("/profile");
-    return;
-  }
+router.get("/login", async (req, res) => {
+  try {
+    if (!req.session.logged_in) {
+      const dbLogoPhotoData = await LogoPhoto.findAll();
+      const photos = dbLogoPhotoData.map((photo) => photo.get({ plain: true }));
+      console.log(photos);
 
-  res.render("login");
+      const randomIndex = Math.floor(Math.random() * photos.length);
+
+      const photoUrl = photos[randomIndex].logo_photo_url;
+      console.log(photoUrl);
+      res.render(`login`, {
+        photoUrl,
+      });
+    } else {
+      res.redirect("/profile");
+      return;
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ msg: "error occurred", err });
+  }
 });
 
 //get all users for our homepage
@@ -314,7 +336,7 @@ router.get("/stamps/:id", withAuth, async (req, res) => {
   }
 });
 
-router.get("/home", async (req, res) => {
+router.get("/home", withAuth, async (req, res) => {
   try {
     const userData = await User.findAll({
       include: [Stamp],
