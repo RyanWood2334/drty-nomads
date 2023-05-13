@@ -111,6 +111,15 @@ router.get("/login", async (req, res) => {
   }
 });
 
+router.get("/home", (req, res) => {
+  if (req.session.logged_in) {
+    res.redirect("/profile");
+    return;
+  }
+
+  res.render("login");
+});
+
 //get all users for our homepage
 // router.get("/home", async (req, res) => {
 //   try {

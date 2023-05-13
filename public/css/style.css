@@ -33,10 +33,11 @@ header, .project:not(:last-child) {
 
   #singleton {
     width: 100%;
-    height: auto;
+    /* height: auto; */
     object-fit: cover;
-    max-width: 700px;
+    /* max-width: 1000px; */
     /* border-radius: 5px !important; */
+    border-radius: 25px !important;
   }
   
 
@@ -153,8 +154,9 @@ header, .project:not(:last-child) {
     color: black;
     background-color: white;
      /* background-image: url(../images/vintage-grunge-paper-background_720.jpg);  */
-     margin-left: 20%;
-      margin-right: 20%;
+     margin-left: 20px;
+      margin-right: 20px;
+      margin-bottom: 10px;
       border-radius: 25px;
       font-family: 'IM Fell English SC', serif;
       opacity: 80%;
@@ -446,4 +448,27 @@ p + p {
 .col-md-3 {
   flex: 1 0 auto !important;
   width: 24%;
+}
+
+.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+  --bs-gutter-x: 0 !important;
+}
+
+.kayak-search-container {
+  height: 280px;
+  width: 100%;
+  max-width: 1290px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .kayak-search-container {
+    height: 200px;
+  }
+}
+
+@media (max-width: 576px) {
+  .kayak-search-container {
+    height: 150px;
+  }
 }

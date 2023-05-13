@@ -1,7 +1,7 @@
 function likeStamp() {
   const stampId = this.attributes["data-id"].nodeValue;
 
-  console.log(this.attributes);
+  // console.log(this.attributes);
 
   // make put request
   fetch(`/api/stamps/${stampId}/like`, {
@@ -18,6 +18,6 @@ function likeStamp() {
 const likeBtns = document.getElementsByClassName("stamp-like-btn");
 
 for (let i = 0; i < likeBtns.length; i++) {
-  console.log(likeBtns[i]);
+  // console.log(likeBtns[i]);
   likeBtns[i].addEventListener("click", likeStamp);
 }
