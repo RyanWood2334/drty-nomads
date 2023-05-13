@@ -21,50 +21,23 @@
   </div>
 </div>
 
-
+  <div>
+  <button id="new-future-trip-btn" class="btn btn-block btn-danger button-72" style="padding-bottom: 20px;">Plan a trip!</button>
 
 
   <div>
-  <button id="new-stamp-btn" class="btn btn-block btn-danger button-72" style="padding-bottom: 20px;">Create a new
-    destination stamp</button>
+  <button id="profile-page-btn" class="btn btn-block btn-danger button-72" style="padding-bottom: 20px;">Head back to the profile!</button>
+
 
 </div>
-  <div>
-  <button id="plannedtrips-page-btn" class="btn btn-block btn-danger button-72" style="padding-bottom: 20px;">Head to our future trip page to plan some trips!</button>
-
-</div>
-
-
-
 <!-- Add a button to show/hide the form -->
 
-
-<!-- Add the form inside a container with an ID for easy selection -->
-<div id="new-stamp-form-container" style="display: none;">
-    <form class="form new-project-form bg-light bg-opacity-75 w-50 rounded pl-4 pb-2">
-        <img src="" hidden="hidden" id="ac-img">
-        <label for="project-name" style="color:rgb(73, 73, 73)">Destination:</label>
-        <div class="form-group d-flex justify-content">
-            <input class="typeahead form-control form-input w-50 bg-light" type="text" id="project-name"
-                   name="project-name" placeholder="Where did you go?"/>
-        </div>
-        <div>
-            <label for="add-photo-btn" class="form-group d-flex" style="color:rgb(73, 73, 73)">Add photos:</label>
-            <button type="click" class="btn btn-primary button-72" id="add-photo-btn">Upload Photos</button>
-        </div>
-
-        <div class="form-group ">
-            <label for="project-desc" style="color:rgb(73, 73, 73)">Share your memories:</label>
-            <textarea class="form-input w-50 bg-light" id="project-desc" name="project-desc"
-                      placeholder="Tell us about your trip"></textarea>
-        </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary button-72">Create Stamp</button>
-
-        </div>
-    </form>
-
 </div>
+<div style="height: 300px;px;width: 1290px;">
+<div id="kayakSearchWidgetContainer"></div>
+</div>
+</div>
+
 
 <div id="new-future-trip-form-container" style="display: none;">
     <form class="form new-future-trip-form bg-light bg-opacity-75 w-50 rounded pl-4 pb-2">
@@ -80,9 +53,31 @@
         </div>
 
         <div class="form-group ">
-            <label for="future-trip-desc" style="color:rgb(73, 73, 73)">Why do you want to go?:</label>
+            <label for="future-trip-length" style="color:rgb(73, 73, 73)">How long do you want to go for?</label>
+            <textarea class="form-input w-50 bg-light" id="future-trip-length" name="future-trip-length"
+                      placeholder="Duration of stay..."></textarea>
+        </div>
+        <div class="form-group ">
+            <label for="future-trip-date" style="color:rgb(73, 73, 73)">When do you want to go?</label>
+            <textarea class="form-input w-50 bg-light" id="future-trip-date" name="future-trip-date"
+                      placeholder="Dates of Trip..."></textarea>
+        </div>
+        <div class="form-group">
+    <label for="future-trip-hotel-check">Where are you going to stay?</label>
+    <select class="form-control" id="future-trip-hotel-check">
+      <option>Hotel</option>
+      <option>Camping</option>
+      <option>AirBnb</option>
+      <option>VRBO</option>
+      <option>Friends/Family</option>
+      <option>CouchSurf</option>
+      <option>Adventure Van</option>
+    </select>
+  </div>
+        <div class="form-group ">
+            <label for="future-trip-desc" style="color:rgb(73, 73, 73)">Why this place? What activities do you like?</label>
             <textarea class="form-input w-50 bg-light" id="future-trip-desc" name="future-trip-desc"
-                      placeholder="Why this place?"></textarea>
+                      placeholder="Why go here?"></textarea>
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary button-72">Create Dream Stamp</button>
@@ -97,65 +92,6 @@
 
 
 
-
-<div class="row align-items-stretch justify-content-between" id="make">
-
-  {{#each stamp as |stamps|}}
-  <div class="col-md-4" id="fix">
-    <div class="card h-100" style="width: 18rem;" id="user-drty-card-stamp">
-      <img class="card-img-top" src="{{stamps.photo_url}}" alt="Card image cap">
-      <div class="card-body d-flex flex-column justify-content-between">
-        <div style="display: flex; justify-content: center;">
-          <h5 class="card-title"><a href="/stamps/{{stamps.id}}" style="color: rgb(6, 3, 22);"
-              id="user-drty-stamp-link">{{stamps.destination_name}}</a></h5>
-
-        </div>
-        <p class="card-text">{{stamps.destination_notes}}</p>
-        <div style="display: flex; justify-content: space-between;">
-          <div style="">
-            {{!-- <button class="btn btn-sm btn-danger button-72" data-id={{stamps.id}}> --}}
-              <img class="" style="width:20%" data-id={{stamps.id}} src="/images/trash.png" alt="">
-              {{!-- </button> --}}
-         
-            <img type="button" class="" style="width:15%" data-bs-toggle="modal"
-              data-bs-target="#updateModal" data-stamp-id={{stamps.id}} src="/images/pencil.png">
-              
-          
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  {{/each}}
-</div>
-
-
-{{!-- <div class="row">
-  {{#each futureTrip as |futureTrips|}}
-  <div class="col-md-4">
-    <div class="card" style="width: 18rem;" id="user-drty-card-stamp">
-      <img class="card-img-top" src="{{futureTrips.future_destination_photo_url}}" alt="Card image cap">
-      <div class="card-body">
-        <div style="display: flex; justify-content: center;" >
-        <h5 class="card-title"><a href="/stamps/{{s.id}}" style="color: rgb(6, 3, 22);" id="user-drty-stamp-link" >{{futureTrips.future_destination_name}}</a></h5>
-
-        </div>
-        <p class="card-text">{{futureTrips.whyGo_notes}}</p>
-       <div style="display: flex; justify-content: center;"><div style="padding-right: 5px;">
-  <button class="btn btn-sm btn-danger button-72" data-id={{futureTrips.id}}>Delete</button></div>
-  <div>
-  <button type="button" class="btn btn-sm btn-danger button-72" data-bs-toggle="modal" data-bs-target="#updateModal" data-stamp-id={{futureTrips.id}}>
-   Update 
-  </button></div>
-</div>
-      </div>
-    </div>
-  </div>
-  {{/each}}
-</div> --}}
-
-{{!-- <footer>
-
 <div class="row align-items-stretch justify-content-between" id="make">
 
   {{#each futureTrip as |futureTrips|}}
@@ -169,6 +105,9 @@
 
         </div>
         <p class="card-text">{{futureTrips.whyGo_notes}}</p>
+        <p class="card-text">{{futureTrips.when_toGo_notes}}</p>
+        <p class="card-text">{{futureTrips.howLong_notes}}</p>
+        <p class="card-text">{{futureTrips.stay_in_hotel}}</p>
         <div style="display: flex; justify-content: space-between;">
           <div style="">
             
@@ -186,12 +125,9 @@
   </div>
   {{/each}}
 </div>
-</footer> --}}
 
 
-
-
-{{!-- modal --}}
+{{!-- 
 <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
 
     <div class="modal-dialog">
@@ -220,9 +156,7 @@
       </form>
     </div>
   </div>
-</div>
-
-     
+</div> --}}
 
 
 
@@ -230,6 +164,7 @@
 
 
 
+<script type="text/JavaScript" src="https://www.kayak.com/affiliate/widget-v2.js"></script>
 <script 
      src="https://widget.cloudinary.com/v2.0/global/all.js" 
      type="text/javascript">

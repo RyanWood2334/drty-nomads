@@ -164,7 +164,7 @@ header, .project:not(:last-child) {
 
   }
 
-  #user-drty-card-stamp {
+  #user-drty-card-stamp #user-drty-card-futureTrip {
     color: black;
     background-color: white;
      /* background-image: url(../images/vintage-grunge-paper-background_720.jpg);  */
@@ -176,7 +176,7 @@ header, .project:not(:last-child) {
     transition: all 0.3s ease-in-out;
   }
 
-  #user-drty-card-stamp:hover {
+  #user-drty-card-stamp:hover #user-drty-card-futureTrip {
     transform: scale(1.09);
     
   }
@@ -202,11 +202,11 @@ header, .project:not(:last-child) {
      /* border-left: 1px solid black; */
       }
 
-#user-drty-stamp-link {
+#user-drty-stamp-link #user-drty-futureTrip-link {
   text-decoration: none;
 }
 
-  #user-drty-stamp-link:hover {
+  #user-drty-stamp-link:hover #user-drty-futureTrip-link {
     color: #8d00cf;
     text-decoration: underline;
   }

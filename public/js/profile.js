@@ -1,4 +1,9 @@
 // Function to handle form submission for creating new stamp
+const plannedTripsPageBtn = document.querySelector("#plannedtrips-page-btn");
+plannedTripsPageBtn.addEventListener("click", function () {
+  document.location.replace("/plannedtrips");
+});
+
 const newFormHandler = async (event) => {
   event.preventDefault();
 
