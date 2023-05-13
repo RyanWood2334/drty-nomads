@@ -10,69 +10,73 @@
                         <div class="mb-3">
                             <label for="first_name-edit" class="form-label text-dark">First name</label>
                             <input type="text" class="form-control" id="first_name-edit" placeholder="First Name"
-                                   value="{{{user.dataValues.first_name}}}">
+                                value="{{{user.dataValues.first_name}}}">
                         </div>
                         <div class="mb-3">
                             <label for="last_name-edit" class="form-label text-dark">Last name</label>
                             <input type="text" class="form-control" id="last_name-edit" placeholder="Last Name"
-                                   value="{{{user.dataValues.last_name}}}">
+                                value="{{{user.dataValues.last_name}}}">
                         </div>
                         <div class="mb-3">
                             <label for="username-edit" class="form-label text-dark">Username</label>
                             <input type="text" class="form-control" id="username-edit" placeholder="Username"
-                                   value="{{{user.dataValues.user_name}}}">
+                                value="{{{user.dataValues.user_name}}}">
                         </div>
                         <div class="mb-3">
                             <label for="user_age-edit" class="form-label text-dark">Age</label>
                             <input type="password" class="form-control" id="user_age-edit" placeholder="Age"
-                                   value="{{{user.dataValues.user_age}}}">
+                                value="{{{user.dataValues.user_age}}}">
                         </div>
                         <div class="mb-3">
                             <label for="user_home-edit" class="form-label text-dark">Home country</label>
                             <input type="text" class="form-control" id="user_home-edit" placeholder="Home Country"
-                                   value="{{{user.dataValues.user_home}}}">
+                                value="{{{user.dataValues.user_home}}}">
                         </div>
-                        <div class="mb-3">
+                        <div style="padding-bottom:50px" class="mb-3">
                             <label for="about_me-edit" class="form-label text-dark">About me <span
                                     style="font-size: medium;">(80 chars)</span></label>
                             <input type="text" class="form-control" id="about_me-edit" placeholder="About Me"
-                                   value="{{{user.dataValues.about_me}}}">
+                                value="{{{user.dataValues.about_me}}}">
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn button-72 text-white" id="editAcctBtn">Update</button>
-                    </div>
-                </form>
-                <!--                Delete btn-->
-                <div>
-                    <button class="btn btn-danger mb-2" data-bs-toggle="modal"
-                            data-bs-target="#deleteModal">Delete Account
-                    </button>
-                </div>
+                    <div class="container">
 
-                <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel"
-                     aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content bg-dark text-light">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Delete Account</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
+                        <div class="modal-footer d-flex justify-content-between align-items-end mb-2">
+                            <div style="position: absolute; bottom: 0; right: 0; margin-bottom:10px; padding-right:10px">
+                                <button type="submit" class="btn button-72 text-white" id="editAcctBtn">Update</button>
                             </div>
-                            <form class="delete-form" action="/api/users/delete-account" method="post">
-                                <div class="modal-body m-2">
-                                    Are you sure you want to delete your account?
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                </div>
-                            </form>
+                            <div style="position: absolute; bottom: 0; left: 0; margin-top:30px; padding-left:10px;">
+                                <button class="btn btn-danger mb-2" data-bs-toggle="modal"
+                                    data-bs-target="#deleteModal">Delete Account</button>
+                            </div>
                         </div>
+                    </div>
+
+            </div>
+            </form>
+
+            <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content bg-dark text-light">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Delete Account</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form class="delete-form" action="/api/users/delete-account" method="post">
+                            <div class="modal-body m-2">
+                                Are you sure you want to delete your account?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 
 <script src="/js/settings.js"></script>
