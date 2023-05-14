@@ -1,4 +1,3 @@
-
 document.querySelector(".settings-form").addEventListener('submit',  async(e) => {
     e.preventDefault();
 
@@ -27,6 +26,6 @@ document.querySelector(".settings-form").addEventListener('submit',  async(e) =>
             about_me: aboutMe,
         }),
     })
-    alert("The information has been updated");
+    window.location.replace('/profile?settingsSaved=true');
 })
 

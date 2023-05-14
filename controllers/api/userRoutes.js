@@ -15,7 +15,6 @@ router.post("/", async (req, res) => {
     user_home: req.body.user_home,
     about_me: req.body.about_me,
   };
-
   try {
     const userData = await User.create(newUser);
 
@@ -28,6 +27,7 @@ router.post("/", async (req, res) => {
   } catch (err) {
     res.status(400).json(err);
   }
+
 });
 
 router.put("/:id", (req, res) => {

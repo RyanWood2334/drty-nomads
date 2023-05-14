@@ -10,33 +10,33 @@
                         <div class="mb-3">
                             <label for="first_name-edit" class="form-label text-dark">First name</label>
                             <input type="text" class="form-control" id="first_name-edit" placeholder="First Name"
-                                value="{{{user.dataValues.first_name}}}">
+                                   value="{{{user.dataValues.first_name}}}">
                         </div>
                         <div class="mb-3">
                             <label for="last_name-edit" class="form-label text-dark">Last name</label>
                             <input type="text" class="form-control" id="last_name-edit" placeholder="Last Name"
-                                value="{{{user.dataValues.last_name}}}">
+                                   value="{{{user.dataValues.last_name}}}">
                         </div>
                         <div class="mb-3">
                             <label for="username-edit" class="form-label text-dark">Username</label>
                             <input type="text" class="form-control" id="username-edit" placeholder="Username"
-                                value="{{{user.dataValues.user_name}}}">
+                                   value="{{{user.dataValues.user_name}}}">
                         </div>
                         <div class="mb-3">
                             <label for="user_age-edit" class="form-label text-dark">Age</label>
                             <input type="password" class="form-control" id="user_age-edit" placeholder="Age"
-                                value="{{{user.dataValues.user_age}}}">
+                                   value="{{{user.dataValues.user_age}}}">
                         </div>
                         <div class="mb-3">
                             <label for="user_home-edit" class="form-label text-dark">Home country</label>
                             <input type="text" class="form-control" id="user_home-edit" placeholder="Home Country"
-                                value="{{{user.dataValues.user_home}}}">
+                                   value="{{{user.dataValues.user_home}}}">
                         </div>
                         <div style="padding-bottom:50px" class="mb-3">
                             <label for="about_me-edit" class="form-label text-dark">About me <span
                                     style="font-size: medium;">(80 chars)</span></label>
                             <input type="text" class="form-control" id="about_me-edit" placeholder="About Me"
-                                value="{{{user.dataValues.about_me}}}">
+                                   value="{{{user.dataValues.about_me}}}">
                         </div>
                     </div>
                     <div class="container">
@@ -47,16 +47,15 @@
                             </div>
                             <div style="position: absolute; bottom: 0; left: 0; margin-top:30px; padding-left:10px;">
                                 <button class="btn btn-danger mb-2" data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal">Delete Account</button>
+                                        data-bs-target="#deleteModal">Delete Account
+                                </button>
                             </div>
                         </div>
                     </div>
-
-            </div>
             </form>
 
             <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel"
-                aria-hidden="true">
+                 aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content bg-dark text-light">
                         <div class="modal-header">
@@ -78,5 +77,6 @@
     </div>
 </div>
 </div>
+
 
 <script src="/js/settings.js"></script>

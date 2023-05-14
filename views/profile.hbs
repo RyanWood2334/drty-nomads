@@ -3,11 +3,11 @@
         <div id="drty-card-header" class="card col-sm-12 display-flex flex-row justify-center">
             <div class="container d-flex align-items-center" id="drty-card-header-textbox">
                 <div class="row">
-                    <div class="image text-center col-sm-3">
+                    <div class="image text-center col-sm-4">
                         <img src="{{user.profile_pic}}" class="card-img my-prof img-fluid" alt="avatar"
                              style="height: 300px; object-fit: cover; opacity: 1 !important;">
                     </div>
-                    <div class="col-sm-9 flex-column mt-2">
+                    <div class="col-sm-8 flex-column mt-2">
                         <div class="bg-light bg-opacity-75 rounded p-2" style="flex-grow: 1;">
                             <h4 class="">{{user.first_name}} {{user.last_name}}</h4>
                             <div class="" style="flex-grow: 1;">
@@ -157,7 +157,29 @@
         </div>
     </div>
 </div>
+<!-- Toast -->
+<div id="share-trip-toast" class="toast bg-light" role="alert" aria-live="assertive" aria-atomic="true" style="position: fixed; top: 10px; right: 30px;">
+    <div class="toast-header">
+        <strong class="me-auto">Picture</strong>
+        <smal>Just now</smal>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+        Success! The picture has been uploaded.
+    </div>
+</div>
 
+<!-- Toast -->
+<div id="settings-toast" class="toast bg-light" role="alert" aria-live="assertive" aria-atomic="true" style="position: fixed; top: 10px; right: 30px;">
+    <div class="toast-header">
+        <strong class="me-auto">Settings</strong>
+        <smal>Just now</smal>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+        Success! The settings have been updated.
+    </div>
+</div>
 
 <script
         src="https://widget.cloudinary.com/v2.0/global/all.js"

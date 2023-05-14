@@ -28,7 +28,7 @@ const newFormHandler = async (event) => {
     if (response.ok) {
       document.location.replace("/profile");
     } else {
-      alert("Failed to create stamp");
+      console.log("Failed to create stamp");
     }
   }
 };
@@ -46,7 +46,7 @@ deleteButtons.forEach((button) => {
       document.location.replace("/profile");
     } else {
       console.log(response.status);
-      alert("Failed to delete project");
+      console.log("Failed to delete project");
     }
   });
 });
@@ -105,15 +105,29 @@ const myWidget = cloudinary.createUploadWidget(
       console.log("Done! Here is the image info: ", result.info);
       picUploadUrl = result.info.url;
       console.log("uploaded-pic-URL", picUploadUrl);
-      window.alert("Picture uploaded!");
+      toastMsg();
     }
+  });
+function toastMsg(){
+  const toastEl = document.querySelector('#share-trip-toast');
+  const toastInstance = new bootstrap.Toast(toastEl);
+  toastInstance.show();
+}
 
-    // console.log("Done! Here is the image info: ", result.info);
-    // document
-    //   .getElementById("card-img-top")
-    //   .setAttribute("src", result.info.url);
-  }
-);
+// Show toast for saved settings after the page loads
+const params = new URLSearchParams(window.location.search);
+const settingsUpdated = params.get('settingsSaved') === 'true';
+if (settingsUpdated) {
+  document.addEventListener('DOMContentLoaded', () => toastMsgSettings());
+}
+
+function toastMsgSettings(){
+  const toastEl = document.querySelector('#settings-toast');
+  const toastInstance = new bootstrap.Toast(toastEl);
+  toastInstance.show();
+}
+
+
 uploadPhotoBtn.addEventListener("click", function () {
   myWidget.open();
 });
