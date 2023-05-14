@@ -194,19 +194,19 @@ KAYAK.embed({
   mc: "EUR",
 });
 
-// const deleteButtons = document.querySelectorAll("[data-id]");
-// deleteButtons.forEach((button) => {
-//   button.addEventListener("click", async (event) => {
-//     const id = event.target.getAttribute("data-id");
-//     const response = await fetch(`/api/futuretrips/${id}`, {
-//       method: "DELETE",
-//     });
+const deletebtn = document.querySelectorAll("[data-id]");
+deletebtn.forEach((button) => {
+  button.addEventListener("click", async (event) => {
+    const id = event.target.getAttribute("data-id");
+    const response = await fetch(`/api/futuretrips/${id}`, {
+      method: "DELETE",
+    });
 
-//     if (response.ok) {
-//       document.location.replace("/plannedtrips");
-//     } else {
-//       console.log(response.status);
-//       alert("Failed to delete Trip Plan");
-//     }
-//   });
-// });
+    if (response.ok) {
+      document.location.replace("/plannedtrips");
+    } else {
+      console.log(response.status);
+      alert("Failed to delete Trip Plan");
+    }
+  });
+});
