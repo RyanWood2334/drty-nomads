@@ -26,7 +26,7 @@ const loginFormHandler = async (event) => {
       // If successful, redirect the browser to the profile page
       document.location.replace("/profile");
     } else {
-      alert(await response.text());
+      console.log(await response.text());
     }
   }
 };
@@ -69,11 +69,10 @@ const signupFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      alert("User created");
       document.location.replace("/profile");
       // document.location.replace('/stamps');
     } else {
-      alert(await response.text());
+      console.log(await response.text());
     }
   }
 };
@@ -134,11 +133,19 @@ const myWidget = cloudinary.createUploadWidget(
       console.log("Done! Here is the image info: ", result.info);
       profilePicUploadUrl = result.info.url;
       console.log("uploaded-pic-URL", profilePicUploadUrl);
-      window.alert("Picture uploaded!");
+      toastMsg();
       document.getElementById("profile-pic-btn");
     }
   }
 );
+
+function toastMsg(){
+  const toastEl = document.querySelector('#login-toast');
+  const toastInstance = new bootstrap.Toast(toastEl);
+  toastInstance.show();
+}
+
+
 
 profilePicBtn.addEventListener("click", function () {
   myWidget.open();

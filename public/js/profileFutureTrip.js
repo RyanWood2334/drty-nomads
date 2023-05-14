@@ -52,7 +52,7 @@ const NewFutureDestinationFormHandler = async (event) => {
     if (response.ok) {
       document.location.replace("/plannedtrips");
     } else {
-      alert("Failed to create future Trip!");
+      console.log("Failed to create future Trip!");
     }
   }
 };
@@ -97,15 +97,16 @@ const myWidgetFutureTrip = cloudinary.createUploadWidget(
       console.log("Done! Here is the image info: ", result.info);
       futureTripPicUploadUrl = result.info.url;
       console.log("uploaded-pic-URL", futureTripPicUploadUrl);
-      window.alert("Picture uploaded!");
+      toastMsgFutureTrips();
     }
-
-    // console.log("Done! Here is the image info: ", result.info);
-    // document
-    //   .getElementById("card-img-top")
-    //   .setAttribute("src", result.info.url);
   }
 );
+
+function toastMsgFutureTrips() {
+  const toastEl = document.querySelector('#future-trips-toast');
+  const toastInstance = new bootstrap.Toast(toastEl);
+  toastInstance.show();
+}
 futureTripUploadPhotoBtn.addEventListener("click", function () {
   myWidgetFutureTrip.open();
 });

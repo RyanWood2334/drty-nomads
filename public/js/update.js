@@ -37,7 +37,7 @@ const updateFormHandler = async (event) => {
     // If successful, redirect the browser to the profile page
     document.location.replace("/profile");
   } else {
-    alert("Failed to update stamp");
+    console.log("Failed to update stamp");
   }
 };
 
