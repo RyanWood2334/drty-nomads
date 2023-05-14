@@ -1,38 +1,41 @@
-<div class="card mb-3" id="drty-card">
-    <div class="row no-gutters" id="drty-card-header">
-        <div class="col-md-3">
-            <img src="{{user.profile_pic}}" class="card-img my-prof img-fluid" alt="avatar"
-                 style="height: 300px; object-fit: cover;">
-        </div>
-        <div class="col-md-3" id="drty-card-header-textbox">
-            <div class="card-body">
-                <h1 class="card-title"> {{user.first_name}} {{user.last_name}}</h1>
-                <h4 class="card-text"> {{user.user_home}}</h4>
-                <h7 class="card-text"> Age:{{user.user_age}}</h7>
-                <p class="card-text" style="color:black;">About me: {{user.about_me}}</p>
+<div class="container">
+    <div class="row">
+        <div id="drty-card-header" class="card col-sm-12 display-flex flex-row justify-center">
+            <div class="container d-flex align-items-center" id="drty-card-header-textbox">
+                <div class="row">
+                    <div class="image text-center col-sm-3">
+                        <img src="{{user.profile_pic}}" class="card-img my-prof img-fluid" alt="avatar"
+                             style="height: 300px; object-fit: cover; opacity: 1 !important;">
+                    </div>
+                    <div class="col-sm-9 flex-column mt-2">
+                        <div class="bg-light bg-opacity-75 rounded p-2" style="flex-grow: 1;">
+                            <h4 class="">{{user.first_name}} {{user.last_name}}</h4>
+                            <div class="" style="flex-grow: 1;">
+                                <div>
+                                    <span>From: {{user.user_home}}</span>
+                                </div>
+                                <div>
+                                    <span>Age: {{user.user_age}}</span>
+                                </div>
+                                <div>
+                                    <span>About me: {{user.about_me}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 display-flex flex-row justify-center">
+                            <div>
+                                <img src="/images/stampShareTrip.png" alt="Share Trip" class="mt-3" id="new-stamp-btn">
+                            </div>
+                            <div>
+                                <img src="/images/stampAddTrip.png" alt="Add Trip" class="mt-3" id="plannedtrips-page-btn">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
-<!-- Stamps -->
-
-<div class="col-sm-12 display-flex flex-row justify-center mt-3">
-    <div>
-        <!--    <button id="new-stamp-btn" class="btn btn-block btn-danger button-72" style="padding-bottom: 20px;">Create a new-->
-        <!--        destination stamp-->
-        <!--    </button>-->
-        <img src="/images/stampShareTrip.png" alt="Share Trip" id="new-stamp-btn">
-
-    </div>
-    <div>
-        <!--    <button id="plannedtrips-page-btn" class="btn btn-block btn-danger button-72" style="padding-bottom: 20px;">Head to-->
-        <!--        our future trip page to plan some trips!-->
-        <!--    </button>-->
-        <img src="/images/stampAddTrip.png" alt="Add Trip" id="plannedtrips-page-btn">
-    </div>
-</div>
-
 
 <!-- Add the form inside a container with an ID for easy selection -->
 <div id="new-stamp-form-container" style="display: none;">

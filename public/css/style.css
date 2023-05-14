@@ -85,7 +85,7 @@ header, .project:not(:last-child) {
     align-items: start;
     box-shadow: none;
     transition: all 0.3s ease-in-out;
-    height: 150px;
+    height: 130px;
     width: auto;
   }
 
@@ -94,16 +94,18 @@ header, .project:not(:last-child) {
   align-items: start;
   box-shadow: none;
   transition: all 0.3s ease-in-out;
-  height: 150px;
+  height: 130px;
   width: auto;
 }
   
-  #new-stamp-btn:hover {
-    transform: scale(1.08);
+#new-stamp-btn:hover {
+  transform: scale(1.08);
+  -webkit-filter: brightness(110%);
   }
 
 #plannedtrips-page-btn:hover {
   transform: scale(1.08);
+  -webkit-filter: brightness(110%);
 }
   
   #new-back-btn, .card-img-top {
@@ -188,17 +190,12 @@ header, .project:not(:last-child) {
   
   #drty-card-header {
     background-image: url(../images/passport-paper-unsplash.jpg);
-    background-size: 1450px;
-    border-radius: 15px;
-    color: black;
-    opacity: 90%;
+    background-repeat: repeat;
   }
 
   #drty-card-header-textbox {
-    background-color: white;
     /* background-image: url(../images/vintage-grunge-paper-background_720.jpg);  */
      font-family: 'IM Fell English SC', serif;
-     opacity: 90%;
      margin: 10px;
      color: black;
      border-radius: 15px;
