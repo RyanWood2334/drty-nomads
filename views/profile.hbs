@@ -5,7 +5,7 @@
                 <div class="row">
                     <div class="image text-center col-sm-4">
                         <img src="{{user.profile_pic}}" class="card-img my-prof img-fluid" alt="avatar"
-                             style="height: 300px; object-fit: cover; opacity: 1 !important;">
+                             style="height: 300px; object-fit: cover;">
                     </div>
                     <div class="col-sm-8 flex-column mt-2">
                         <div class="bg-light bg-opacity-75 rounded p-2" style="flex-grow: 1;">
@@ -99,7 +99,26 @@
 
 </div>
 
+<!--TS Visited destinations stamps-->
+<div class="container">
+    <div class="row">
+        <div class="card col-sm-12 display-flex flex-row justify-flex-start p-0">
+            {{#each stamp as |stamps|}}
+                <div class="card" style="width: 18rem;">
+                    <img src="{{stamps.photo_url}}" class="card-img-top" alt="User travel photo">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="/stamps/{{stamps.id}}" style="color: rgb(6, 3, 22); text-decoration: none !important;"
+                                                  id="user-drty-stamp-link">{{stamps.destination_name}}</a></h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</div>
 
+<!--Visited destinations stamps-->
 <div class="row align-items-stretch justify-content-between" id="make">
 
     {{#each stamp as |stamps|}}
@@ -157,8 +176,10 @@
         </div>
     </div>
 </div>
+
 <!-- Toast -->
-<div id="share-trip-toast" class="toast bg-light" role="alert" aria-live="assertive" aria-atomic="true" style="position: fixed; top: 10px; right: 30px;">
+<div id="share-trip-toast" class="toast bg-light" role="alert" aria-live="assertive" aria-atomic="true"
+     style="position: fixed; top: 10px; right: 30px;">
     <div class="toast-header">
         <strong class="me-auto">Picture</strong>
         <smal>Just now</smal>
@@ -170,7 +191,8 @@
 </div>
 
 <!-- Toast -->
-<div id="settings-toast" class="toast bg-light" role="alert" aria-live="assertive" aria-atomic="true" style="position: fixed; top: 10px; right: 30px;">
+<div id="settings-toast" class="toast bg-light" role="alert" aria-live="assertive" aria-atomic="true"
+     style="position: fixed; top: 10px; right: 30px;">
     <div class="toast-header">
         <strong class="me-auto">Settings</strong>
         <smal>Just now</smal>

@@ -187,13 +187,13 @@ header, .project:not(:last-child) {
       opacity: 90%;
   }
 
-  #fix{
-    padding-bottom: 15px !important;
-    padding-top: 15px !important;
-    text-decoration: none;
-    /* flex: 1 0; */
+  /*#fix{*/
+  /*  padding-bottom: 15px !important;*/
+  /*  padding-top: 15px !important;*/
+  /*  text-decoration: none;*/
+  /*  !* flex: 1 0; *!*/
 
-  }
+  /*}*/
 
   #user-drty-card-stamp #user-drty-card-futureTrip {
     color: black;
