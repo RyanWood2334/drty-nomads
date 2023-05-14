@@ -27,7 +27,8 @@
     background-image: url("../images/new-bg.png");
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: center;
+    background-attachment: fixed;
     /* opacity: 80%; */
   }
   
