@@ -3,6 +3,7 @@ const Photo = require("./Photo");
 const Stamp = require("./Stamp");
 const Place = require("./Place");
 const FutureTrip = require("./FutureTrip");
+const LogoPhoto = require("./LogoPhoto");
 
 User.hasMany(Stamp, {
   onDelete: "CASCADE",
@@ -41,4 +42,5 @@ module.exports = {
   Stamp: Stamp,
   Place: Place,
   FutureTrip: FutureTrip,
+  LogoPhoto: LogoPhoto,
 };

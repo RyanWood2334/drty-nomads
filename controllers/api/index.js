@@ -6,6 +6,7 @@ const stampRoutes = require("./stampRoutes");
 const placeRoutes = require("./~placeRoutes");
 const photoRoutes = require("./~photoRoutes");
 const futureTripRoutes = require("./futureTripRoutes");
+const logoPhotoRoutes = require("./logoPhotoRoutes");
 
 // Import controllers for all models here
 
@@ -25,5 +26,6 @@ router.use("/places", placeRoutes);
 router.use("/users", userRoutes);
 router.use("/photos", photoRoutes);
 router.use("/futuretrips", futureTripRoutes);
+router.use("/logoPhotos", logoPhotoRoutes);
 
 module.exports = router;
