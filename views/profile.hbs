@@ -75,10 +75,10 @@
                 <div class="card p-0">
                     <img src="{{stamp.photo_url}}" class="card-img-top" alt="User travel photo">
                     <div class="card-body">
-                        <h5 class="card-title"><a href="/stamps/{{stamp.id}}"
+                        <h5 class="card-title text-truncate"><a href="/stamps/{{stamp.id}}"
                                                   style="color: rgb(6, 3, 22); text-decoration: none !important;"
                                                   id="user-drty-stamp-link">{{stamp.destination_name}}</a></h5>
-                        <p class="card-text">{{stamp.destination_notes}}</p>
+                        <p class="card-text text-truncate">{{stamp.destination_notes}}</p>
                         <div>
                             <img class="" style="width:10%" data-id={{stamp.id}} src="/images/trash.png"
                                  alt="">
