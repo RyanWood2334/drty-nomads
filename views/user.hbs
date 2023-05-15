@@ -54,18 +54,15 @@
           <p class="card-text">{{this.destination_notes}}</p>
         </div>
       <div style="display: flex; justify-content: center;">
-        <a href="/users/{{this.UserId}}">
         <div class="container">
 
        <div  style="margin-top: 30px;">
   <button style="font-family: Arial, Helvetica, sans-serif !important; font-size:large"
     class="btn btn-sm btn-danger stamp-like-btn" data-id="{{this.id}}">
-    {{this.likes}} ❤️'s
+      <span class="like-counter">{{this.StampLikes.length}}</span> ❤️'s
   </button>
 </div>
         </div>
-
-        </a>
       </div>
     </div>
   </div>

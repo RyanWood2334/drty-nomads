@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const { Stamp, User, Photo, Place } = require("../../models");
+const withAuth = require("../../utils/auth");
+const StampLike = require("../../models/Like");
 
 router.post("/", async (req, res) => {
   if (!req.session.logged_in) {
@@ -22,16 +24,42 @@ router.post("/", async (req, res) => {
 });
 
 // test routes for adding like 
-router.put("/:id/like", (req,res)=>{
-  Stamp.findOne({where:{id: req.params.id}}).then(data=>{
-    const stampData = data;
-    Stamp.update({likes:stampData.likes + 1},{where:{id:req.params.id}}).then(data=>{
-      res.json({message: "Likes updated!"});
-    }).catch(err=>{
-      console.log(err);
-      res.status(500).json({msg:"invalid syntax hence ,error occurred",err})
+router.put("/:id/like", withAuth, async (req,res)=>{
+  const user_id = req.session.user_id;
+  const stamp_id = req.params.id;
+
+  const likeWhereClause = {
+    where: {
+      UserId: user_id,
+      StampId: stamp_id,
+    }
+  }
+
+  // Check if user has already liked stamp
+  const like = await StampLike.findOne(likeWhereClause);
+  console.log(like);
+
+  if (like) {
+    // If like exists, we should "destroy" it
+    await StampLike.destroy(likeWhereClause);
+  } else {
+    // If like did not exist, create one
+    await StampLike.create({
+      UserId: user_id,
+      StampId: stamp_id,
     })
-  })
+  }
+
+  const likes = await StampLike.findAll({
+    where:{
+      StampId: stamp_id,
+    }
+  });
+
+
+  res.status(200).json({
+    count: likes.length,
+  });
 })
 
 router.get("/:id/", (req,res)=>{

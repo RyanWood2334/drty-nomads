@@ -22,11 +22,11 @@ const seedDatabase = async () => {
       individualHooks: true,
       returning: true,
     });
+    await Stamp.bulkCreate(stampData);
+
     await Photo.bulkCreate(photoData);
 
     await Place.bulkCreate(placeData);
-
-    await Stamp.bulkCreate(stampData);
 
     await FutureTrip.bulkCreate(futureTripData);
 

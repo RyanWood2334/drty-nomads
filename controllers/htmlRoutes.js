@@ -8,6 +8,7 @@ const {
   LogoPhoto,
 } = require("../models");
 const withAuth = require("../utils/auth");
+const StampLike = require("../models/Like");
 
 router.get("/", async (req, res) => {
   try {
@@ -246,7 +247,12 @@ router.get("/profile", withAuth, async (req, res) => {
 router.get("/users/:id", withAuth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.params.id, {
-      include: [Stamp],
+      include: [
+        {
+          model: Stamp,
+          include: [StampLike],
+        }
+        ],
     });
 
     if (!userData) {
@@ -256,7 +262,7 @@ router.get("/users/:id", withAuth, async (req, res) => {
     const user = userData.get({ plain: true });
     const stamps = user.Stamps;
 
-    console.log(user);
+    console.log(stamps);
 
     const logged = true;
 
@@ -311,7 +317,7 @@ router.get("/profile", withAuth, async (req, res) => {
 router.get("/stamps/:id", withAuth, async (req, res) => {
   try {
     const dbStampData = await Stamp.findByPk(req.params.id, {
-      include: [Place, User, Photo],
+      include: [Place, User, Photo, StampLike],
     });
 
     if (!dbStampData) {
