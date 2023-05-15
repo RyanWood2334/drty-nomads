@@ -188,14 +188,6 @@ header, .project:not(:last-child) {
       opacity: 90%;
   }
 
-  /*#fix{*/
-  /*  padding-bottom: 15px !important;*/
-  /*  padding-top: 15px !important;*/
-  /*  text-decoration: none;*/
-  /*  !* flex: 1 0; *!*/
-
-  /*}*/
-
   #user-drty-card-stamp #user-drty-card-futureTrip {
     color: black;
     background-color: white;
@@ -211,6 +203,14 @@ header, .project:not(:last-child) {
   #user-drty-card-stamp:hover {
     transform: scale(1.04);
     
+  }
+
+  #nomads-display-card {
+    transition: transform .2s;
+  }
+
+  #nomads-display-card:hover {
+    transform:scale(1.1);
   }
 
   
@@ -252,14 +252,10 @@ header, .project:not(:last-child) {
   
   .button-72 {
     align-items: center;
-    background-color: initial;
     background-image: linear-gradient(rgba(179, 132, 201, .84), rgba(57, 31, 91, .84) 50%);
     border-radius: 42px;
     color: #FFFFFF;
     cursor: pointer;
-    /* display: flex;  */
-    /* font-family: Quicksand,sans-serif;
-     */
      font-family: Arial, Helvetica, sans-serif !important; 
     font-size: 18px;
     font-weight: 700;
@@ -268,7 +264,6 @@ header, .project:not(:last-child) {
     line-height: 16px;
     margin: 0;
     padding: 18px 18px;
-    /* padding-top: 80%; */
     text-align: center;
     text-decoration: none;
     user-select: none;

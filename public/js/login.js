@@ -26,10 +26,21 @@ const loginFormHandler = async (event) => {
       // If successful, redirect the browser to the profile page
       document.location.replace("/profile");
     } else {
+      // toast fail-login-toast
+      toastMsgFail();
       console.log(await response.text());
     }
   }
 };
+
+
+
+
+function toastMsgFail(){
+  const toastEl = document.querySelector('#fail-login-toast');
+  const toastInstance = new bootstrap.Toast(toastEl);
+  toastInstance.show();
+}
 let profilePicUploadUrl = "";
 
 const signupFormHandler = async (event) => {
@@ -72,10 +83,18 @@ const signupFormHandler = async (event) => {
       document.location.replace("/profile");
       // document.location.replace('/stamps');
     } else {
+      toastMsgPassword();
       console.log(await response.text());
     }
   }
 };
+
+function toastMsgPassword() {
+  const toastEl = document.querySelector('#fail-password-len-toast');
+  const toastInstance = new bootstrap.Toast(toastEl);
+  toastInstance.show();
+}
+
 document
   .querySelector(".signup-form")
   .addEventListener("submit", signupFormHandler);

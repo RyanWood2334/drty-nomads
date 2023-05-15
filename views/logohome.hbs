@@ -17,7 +17,7 @@
     </div>
 </div>
 
-<!--Toast-->
+<!--Toast for the picture upload on registration-->
 <div id="login-toast" class="toast bg-light" role="alert" aria-live="assertive" aria-atomic="true"
      style="position: fixed; top: 10px; right: 30px;">
     <div class="toast-header">
@@ -27,6 +27,32 @@
     </div>
     <div class="toast-body">
         Success! The picture has been uploaded.
+    </div>
+</div>
+
+<!--Toast for not being able to log in-->
+<div id="fail-login-toast" class="toast bg-light" role="alert" aria-live="assertive" aria-atomic="true"
+     style="position: fixed; top: 10px; right: 30px;">
+    <div class="toast-header">
+        <strong class="me-auto">Login Error</strong>
+        <smal>Just now</smal>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+        User with provided credentials not found.
+    </div>
+</div>
+
+<!--Toast for invalid password-->
+<div id="fail-password-len-toast" class="toast bg-light" role="alert" aria-live="assertive" aria-atomic="true"
+     style="position: fixed; top: 10px; right: 30px;">
+    <div class="toast-header">
+        <strong class="me-auto">Password Length</strong>
+        <smal>Just now</smal>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+        Password should contain at least 5 characters.
     </div>
 </div>
 
@@ -60,7 +86,7 @@
                     </div>
                     <div class="mb-3 form-group required">
                         <label for="user_age-signup" class="form-label control-label">Age</label>
-                        <input type="password" class="form-control" id="user_age-signup" placeholder="Age" required>
+                        <input type="text" class="form-control" id="user_age-signup" placeholder="Age" required>
                     </div>
                     <div class="mb-3 form-group required">
                         <label for="user_home-signup" class="form-label control-label">Home Country</label>
@@ -76,7 +102,7 @@
                 </div>
                 <div class="modal-footer form-group required">
                     <label for="profile-pic-btn" class="form-label control-label">Add Profile Picture</label>
-                    <button type="button" class="btn btn-danger" id="profile-pic-btn" style="display: block">Add picture</button>
+                    <button type="button" class="btn button-72 text-white" id="profile-pic-btn" style="display: block">Add picture</button>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn button-72 text-white" id="registerBtn">Register</button>

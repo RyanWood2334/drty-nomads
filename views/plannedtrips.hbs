@@ -1,38 +1,39 @@
 <!-- Add a button to show/hide the form -->
-
 <div class="container">
-    <div class="row">
-        <div id="drty-card-header" class="card col-sm-12 display-flex flex-row justify-center">
-            <div class="container d-flex align-items-center" id="drty-card-header-textbox">
-                <div class="row">
-                    <div class="image text-center col-sm-4">
-                        <img src="{{user.profile_pic}}" class="card-img my-prof img-fluid" alt="avatar"
-                             style="height: 300px; object-fit: cover; opacity: 1 !important;">
-                    </div>
-                    <div class="col-sm-8 flex-column mt-2">
-                        <div class="bg-light bg-opacity-75 rounded p-2" style="flex-grow: 1;">
-                            <h4 class="">{{user.first_name}} {{user.last_name}}</h4>
-                            <div class="" style="flex-grow: 1;">
-                                <div>
-                                    <span>From: {{user.user_home}}</span>
-                                </div>
-                                <div>
-                                    <span>Age: {{user.user_age}}</span>
-                                </div>
-                                <div>
-                                    <span>About me: {{user.about_me}}</span>
+    <div class="row mb-1">
+        <div class="col-md-12">
+            <div id="drty-card-header" class="card display-flex flex-row">
+                <div class="d-flex align-items-center" id="drty-card-header-textbox">
+                    <div class="row ">
+                        <div class="image text-center col-sm-4">
+                            <img src="{{user.profile_pic}}" class="card-img my-prof img-fluid" alt="avatar"
+                                 style="height: 300px; object-fit: cover;">
+                        </div>
+                        <div class="col-sm-8 flex-column mt-2">
+                            <div class="bg-light bg-opacity-75 rounded p-2" style="flex-grow: 1;">
+                                <h4 class="">{{user.first_name}} {{user.last_name}}</h4>
+                                <div class="" style="flex-grow: 1;">
+                                    <div>
+                                        <span>From: {{user.user_home}}</span>
+                                    </div>
+                                    <div>
+                                        <span>Age: {{user.user_age}}</span>
+                                    </div>
+                                    <div>
+                                        <span>About me: {{user.about_me}}</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    <div class="col-sm-12 display-flex flex-row justify-center">
+                            <div class="col-md-12 display-flex flex-row justify-center">
                                 <div>
-                                  <img src="/images/planplan.png" id="new-future-trip-btn" class="new-stamp-btn" style="padding-top: 20px; padding-right: 50px; width:100%; ">
+                                    <img src="/images/profilebtn.png" alt="Share Trip" class="mt-3 new-stamp-btn"
+                                         id="profile-page-btn">
                                 </div>
                                 <div>
-                                  <img src="/images/profilebtn.png" id="profile-page-btn" class="new-stamp-btn" style="padding-top: 20px; width:100%;">
+                                    <img src="/images/stampAddTrip.png" alt="Add Trip" class="mt-3 new-stamp-btn"
+                                         id="new-future-trip-btn">
                                 </div>
-                              </div>
-
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -40,7 +41,6 @@
         </div>
     </div>
 </div>
-
 
 <div id="new-future-trip-form-container" style="display: none;">
     <div class="container">
