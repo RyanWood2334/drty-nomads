@@ -156,6 +156,10 @@ header, .project:not(:last-child) {
     font-family: "Helvetica Neue", "Roboto", "Segoe UI", "Calibri", sans-serif;
   }
   
+  #login-redirect-img {
+    background-image: url(../images/great-wall-logo.png);
+  }
+
 
   #drty-card-textbox-login {
     color: black;
