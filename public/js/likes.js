@@ -1,18 +1,12 @@
-function likeStamp() {
+async function likeStamp() {
   const stampId = this.attributes["data-id"].nodeValue;
-
-  // console.log(this.attributes);
-
+  const likeCounter = this.querySelector('.like-counter');
   // make put request
-  fetch(`/api/stamps/${stampId}/like`, {
+  const res = await fetch(`/api/stamps/${stampId}/like`, {
     method: "PUT",
-  })
-    .then((response) => {
-      console.log(response);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  });
+  const likes = await res.json();
+  likeCounter.textContent = likes.count;
 }
 
 const likeBtns = document.getElementsByClassName("stamp-like-btn");
